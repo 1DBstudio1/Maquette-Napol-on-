@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Le Napoléon — Gap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="napoleon.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+    <div class="nav-logo" id="burger">
+    <div class="logo-circle"></div>
+    <span class="menu-label">MENU</span>
+</div>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="#bar">Le Bar</a></li>
+        <li><a href="#restauration">Restauration</a></li>
+        <li class="nav-item-hotel">
+    <a href="#hotel" id="hotel-link">Hôtel</a>
+    <div class="sous-menu" id="sous-menu-hotel">
+        <a href="#hotel">Nos chambres</a>
+        <a href="#hotel">Réserver</a>
+        <a href="#hotel">Tarifs</a>
+        <a href="#hotel">Infos pratiques</a>
+    </div>
+</li>
+        <li><a href="#contact">Nous trouver</a></li>
+    </ul>
+</nav>
+
+    <!-- HERO -->
+<section id="hero">
+    <div class="hero-content">
+        <div class="hero-title-box">
+            <h1>Le Napoléon</h1>
+        </div>
+        <p class="hero-tagline">Bar · Hôtel · Restaurant</p>
+        <p class="hero-eyebrow">Accessible et proche de la gare SNCF de Gap</p>
+        <div class="hero-buttons">
+            <a href="#bar" class="btn-primary">Découvrir</a>
+            <a href="#contact" class="btn-secondary">Nous trouver</a>
+        </div>
+    </div>
+    <div class="hero-overlay"></div>
+</section>
+
+    <!-- BAR -->
+    <section id="bar">
+    <div class="section-container">
+        <div class="section-label">01</div>
+        <h2>Le Bar</h2>
+        <p class="section-sub">Un lieu de vie au cœur de Gap</p>
+
+        <!-- BLOC 1 — AMBIANCE -->
+        <div class="bar-ambiance">
+            <div class="bar-text">
+                <p>Que vous soyez de passage ou habitué du quartier, le bar du Napoléon vous accueille dans une ambiance chaleureuse et conviviale. Terrasse en été, intérieur cosy en hiver.</p>
+                <div class="bar-infos">
+                    <div class="info-item">
+                        <span class="info-label">Horaires</span>
+                        <span class="info-value">Tous les jours — 7h à 23h</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Terrasse</span>
+                        <span class="info-value">Disponible aux beaux jours</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Ambiance</span>
+                        <span class="info-value">Locale, conviviale, authentique</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bar-image">
+                <img src="https://images.pexels.com/photos/2111016/pexels-photo-2111016.jpeg" alt="Bar Le Napoléon">
+            </div>
+        </div>
+<!-- BOUTON TOGGLE -->
+<div class="bar-discover-btn">
+    <button class="btn-toggle-bar" id="btnBar">
+        Découvrir le bar
+        <span class="btn-arrow">↓</span>
+    </button>
+</div>
+
+<!-- CONTENU CACHÉ -->
+<div class="bar-extra" id="barExtra">
+    <!-- BLOC 2 — INCONTOURNABLES -->
+    <div class="bar-boissons">
+            <h3 class="bloc-title">Nos incontournables</h3>
+            <div class="boissons-grid">
+                <div class="boisson-card">
+                    <span class="boisson-icon">🍺</span>
+                    <h4>Bière pression</h4>
+                    <p>Fraîche et généreuse, servie comme il se doit.</p>
+                </div>
+                <div class="boisson-card">
+                    <span class="boisson-icon">☕</span>
+                    <h4>Café du comptoir</h4>
+                    <p>Le rendez-vous des habitués, chaque matin.</p>
+                </div>
+                <div class="boisson-card">
+                    <span class="boisson-icon">🥃</span>
+                    <h4>Cocktail maison</h4>
+                    <p>La signature du Napoléon — à découvrir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOC 3 — ÉVÉNEMENTS -->
+        <div class="bar-events">
+            <h3 class="bloc-title">Agenda & Événements</h3>
+            <div class="events-grid">
+                <div class="event-card">
+                    <span class="event-date">À venir</span>
+                    <h4>Soirée DJ</h4>
+                    <p>Une nuit de musique et de bonne humeur au Napoléon.</p>
+                    <span class="event-badge">Soirée</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">À venir</span>
+                    <h4>Retransmission match</h4>
+                    <p>Vivez les grands matchs en direct avec nous.</p>
+                    <span class="event-badge">Sport</span>
+                </div>
+                <div class="event-card event-priv">
+                    <span class="event-date">Sur réservation</span>
+                    <h4>Privatisation</h4>
+                    <p>Le bar disponible pour vos événements privés et groupes.</p>
+                    <span class="event-badge">Privé</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+    <!-- RESTAURATION -->
+    <section id="restauration">
+    <div class="couverts-overlay" id="couverts">
+        <div class="couvert-gauche">
+            <svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Fourchette -->
+                <rect x="27" y="0" width="6" height="180" rx="3" fill="#FFD700"/>
+                <rect x="10" y="0" width="6" height="80" rx="3" fill="#FFD700"/>
+                <rect x="44" y="0" width="6" height="80" rx="3" fill="#FFD700"/>
+                <rect x="10" y="80" width="40" height="6" rx="3" fill="#FFD700"/>
+                <rect x="27" y="180" width="6" height="120" rx="3" fill="#FFD700"/>
+            </svg>
+        </div>
+        <div class="couvert-droite">
+            <svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Couteau -->
+                <rect x="27" y="0" width="6" height="300" rx="3" fill="#FFD700"/>
+                <path d="M33 0 Q60 60 33 120" fill="#FFD700"/>
+            </svg>
+        </div>
+    </div>
+    <div class="section-container resto-content" id="resto-content">
+        <div class="section-label">02</div>
+        <h2>Restauration</h2>
+        <p class="section-sub">Une cuisine généreuse, des saveurs authentiques</p>
+        <div class="resto-grid">
+            <div class="resto-image">
+                <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg" alt="Restauration Le Napoléon">
+            </div>
+            <div class="resto-text">
+                <p>Découvrez notre concept food pensé pour vous régaler à toute heure. Des produits frais, des recettes généreuses, dans un cadre convivial et chaleureux.</p>
+                <div class="resto-cards">
+                    <div class="resto-card">
+                        <span class="resto-card-icon">🍽️</span>
+                        <h3>Le Food</h3>
+                        <p>Petite restauration généreuse et savoureuse, disponible tous les jours.</p>
+                    </div>
+                    <div class="resto-card resto-card-soon">
+                        <span class="resto-card-icon">🔜</span>
+                        <h3>Buffet à volonté</h3>
+                        <p>Bientôt disponible — restez connectés pour ne pas rater l'ouverture.</p>
+                        <span class="badge-soon">Bientôt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- HOTEL -->
+    <section id="hotel">
+    <div class="section-container">
+        <div class="section-label">03</div>
+        <h2>L'Hôtel</h2>
+        <p class="section-sub">Confort et simplicité au cœur de Gap</p>
+
+        <!-- ACCROCHE -->
+        <div class="hotel-accroche">
+            <p>"Un séjour simple, une adresse authentique — bienvenue chez vous à Gap."</p>
+        </div>
+
+        <!-- INFOS + PHOTO -->
+        <div class="hotel-grid">
+            <div class="hotel-image">
+                <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Chambre Hôtel Le Napoléon">
+            </div>
+            <div class="hotel-text">
+                <p>Idéalement situé à 5 minutes à pied de la gare SNCF de Gap, le Napoléon est l'étape parfaite pour vos déplacements professionnels ou touristiques.</p>
+                <div class="hotel-avantages">
+                    <div class="avantage-item">
+                        <span class="avantage-icon">🚉</span>
+                        <div>
+                            <span class="avantage-title">À 5 min de la gare</span>
+                            <span class="avantage-desc">Accès facile, stationnement à proximité</span>
+                        </div>
+                    </div>
+                    <div class="avantage-item">
+                        <span class="avantage-icon">🏙️</span>
+                        <div>
+                            <span class="avantage-title">Centre-ville de Gap</span>
+                            <span class="avantage-desc">Commerces et activités à pied</span>
+                        </div>
+                    </div>
+                    <div class="avantage-item">
+                        <span class="avantage-icon">💰</span>
+                        <div>
+                            <span class="avantage-title">À partir de 55€ / nuit</span>
+                            <span class="avantage-desc">Meilleur prix garanti en réservation directe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVIS -->
+        <div class="hotel-avis">
+            <h3 class="bloc-title">Ce qu'ils en disent</h3>
+            <div class="avis-grid">
+                <div class="avis-card">
+                    <div class="avis-stars">★★★★★</div>
+                    <p>"Un très bon accueil et le patron au top. Je recommande !"</p>
+                    <span class="avis-author">— Salvatore B.</span>
+                </div>
+                <div class="avis-card">
+                    <div class="avis-stars">★★★★★</div>
+                    <p>"En transit à Gap, j'ai trouvé ici exactement ce qu'il me fallait. Simple, efficace, chaleureux."</p>
+                    <span class="avis-author">— Julien D.</span>
+                </div>
+                <div class="avis-card avis-note">
+                    <div class="avis-score">4.2</div>
+                    <div class="avis-stars">★★★★☆</div>
+                    <span class="avis-source">32 avis Google</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RÉSERVATION DÉMO -->
+        <div class="hotel-resa">
+            <h3 class="bloc-title">Réserver une chambre</h3>
+            <div class="resa-box">
+                <div class="resa-fields">
+                    <div class="resa-field">
+                        <label>Arrivée</label>
+                        <input type="date">
+                    </div>
+                    <div class="resa-field">
+                        <label>Départ</label>
+                        <input type="date">
+                    </div>
+                    <div class="resa-field">
+                        <label>Personnes</label>
+                        <select>
+                            <option>1 personne</option>
+                            <option>2 personnes</option>
+                            <option>3 personnes</option>
+                        </select>
+                    </div>
+                    <button class="btn-resa">Vérifier disponibilité</button>
+                </div>
+                <p class="resa-note">Réservation directe — meilleur prix garanti · 0% de commission</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+    <div class="section-container">
+        <div class="section-label">04</div>
+        <h2>Nous trouver</h2>
+        <p class="section-sub">Au cœur de Gap, à 5 min de la gare</p>
+        <div class="contact-grid">
+            <div class="contact-infos">
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <span class="contact-title">Adresse</span>
+                        <span class="contact-value">19 Avenue Commandant Dumont<br>05000 Gap, Hautes-Alpes</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🚉</span>
+                    <div>
+                        <span class="contact-title">Gare SNCF de Gap</span>
+                        <span class="contact-value">À 5 minutes à pied — idéal pour les voyageurs</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <span class="contact-title">Téléphone</span>
+                        <span class="contact-value">À venir</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🕐</span>
+                    <div>
+                        <span class="contact-title">Horaires bar</span>
+                        <span class="contact-value">Tous les jours — 7h à 23h</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=19+Avenue+Commandant+Dumont+Gap" target="_blank" class="btn-primary" style="margin-top: 32px; display: inline-block;">
+                    Ouvrir dans Google Maps
+                </a>
+            </div>
+            <div class="contact-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.5!2d6.0835!3d44.5587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cb3c!2sBar+Le+Napol%C3%A9on+Gap!5e0!3m2!1sfr!2sfr!4v1"
+                    width="100%"
+                    height="400"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <p>© 2026 Bar Le Napoléon — Gap, Hautes-Alpes — Site réalisé par <a href="https://getdbstudio.fr" style="color: #FFD700;">DB Studio</a></p>
+</footer>
+<script>
+    const logo = document.querySelector('.logo-circle');
+    const navMenu = document.getElementById('nav-menu');
+    const hotelLink = document.getElementById('hotel-link');
+    const sousMenu = document.getElementById('sous-menu-hotel');
+
+    // Logo rotation + ouverture menu
+    logo.addEventListener('click', () => {
+        logo.classList.add('spin');
+        setTimeout(() => logo.classList.remove('spin'), 600);
+        navMenu.classList.toggle('open');
+    });
+
+    // Fermer menu au clic sur un lien sauf hôtel
+    navMenu.querySelectorAll('a:not(#hotel-link)').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            sousMenu.classList.remove('open');
+        });
+    });
+
+    // Sous-menu Hôtel
+    hotelLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        sousMenu.classList.toggle('open');
+    });
+    
+    const couvertGauche = document.querySelector('.couvert-gauche');
+const couvertDroite = document.querySelector('.couvert-droite');
+const restoSection = document.getElementById('restauration');
+const restoContent = document.getElementById('resto-content');
+const couverts = document.getElementById('couverts');
+
+window.addEventListener('scroll', () => {
+    const rect = restoSection.getBoundingClientRect();
+    const sectionHeight = restoSection.offsetHeight;
+    
+    // Calcul de la progression du scroll dans la section
+    // 0 = début de la section, 1 = fin
+    const progress = Math.min(Math.max(-rect.top / (sectionHeight * 0.15), 0), 1);
+    
+    const maxTranslate = 55;
+    const translate = progress * maxTranslate;
+    
+    couvertGauche.style.transform = `translateX(-${translate}vw)`;
+    couvertDroite.style.transform = `translateX(${translate}vw)`;
+    
+    // Afficher le contenu quand les couverts sont assez ouverts
+    if (progress > 0.35) {
+        restoContent.classList.add('visible');
+        restoContent.classList.remove('hidden');
+        couverts.classList.add('open');
+    } else {
+        restoContent.classList.remove('visible');
+        restoContent.classList.add('hidden');
+        couverts.classList.remove('open');
+    }
+});
+const btnBar = document.getElementById('btnBar');
+const barExtra = document.getElementById('barExtra');
+
+btnBar.addEventListener('click', () => {
+    btnBar.classList.toggle('open');
+    barExtra.classList.toggle('open');
+    
+    if (btnBar.classList.contains('open')) {
+        btnBar.querySelector('.btn-arrow').textContent = '↑';
+        btnBar.firstChild.textContent = 'Refermer ';
+    } else {
+        btnBar.querySelector('.btn-arrow').textContent = '↓';
+        btnBar.firstChild.textContent = 'Découvrir le bar ';
+    }
+});
+</script>
+</body>
+</html>
