@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Le Napoléon — Gap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: #0D0D0D; color: #F5F5F5; font-family: 'Josefin Sans', sans-serif; font-weight: 300; }
+h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 700; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== NAVBAR ===== */
+#navbar {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 18px 40px;
+    background-color: rgba(13, 13, 13, 0.95);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+}
+.nav-logo {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    cursor: pointer; z-index: 1001; top: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.menu-label {
+    font-family: 'Josefin Sans', sans-serif; font-size: 9px;
+    letter-spacing: 3px; color: rgba(255, 215, 0, 0.6); text-transform: uppercase;
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
+    50% { box-shadow: 0 0 18px rgba(255, 215, 0, 0.7); }
+}
+.logo-circle {
+    animation: pulse 2.5s ease-in-out infinite;
+    width: 90px; height: 90px; border-radius: 50%;
+    background-image: url('napoleon-logo.jpg');
+    background-color: transparent; background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+}
+.logo-circle::before {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(0, 0, 0, 0.45); border-radius: 50%;
+}
+.logo-letter {
+    font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700;
+    color: #FFD700; position: relative; z-index: 2;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Sous-menus */
+.sous-menu, .sous-menu-resto {
+    display: none; flex-direction: column; align-items: center;
+    gap: 16px; margin-top: 16px; padding: 16px 0;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2); width: 100%;
+}
+.sous-menu.open, .sous-menu-resto.open { display: flex; }
+.sous-menu a, .sous-menu-resto a {
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(245, 245, 245, 0.6); transition: color 0.3s ease; padding: 4px 0;
+}
+.sous-menu a:hover, .sous-menu-resto a:hover { color: #FFD700; }
+
+.nav-links {
+    display: none; flex-direction: column; position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: rgba(13, 13, 13, 0.98);
+    justify-content: center; align-items: center; gap: 40px;
+    list-style: none; z-index: 1002;
+}
+.nav-links.open { display: flex; }
+.nav-links a {
+    font-size: 18px; font-weight: 400; letter-spacing: 4px;
+    text-transform: uppercase; color: #F5F5F5; transition: color 0.3s ease;
+}
+.nav-links a:hover { color: #FFD700; }
+
+/* ===== HERO ===== */
+#hero {
+    position: relative; min-height: 100vh;
+    background-image: url('https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg');
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; padding: 0 40px;
+}
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
+}
+.hero-content {
+    position: relative; z-index: 2; max-width: 700px;
+    text-align: center; margin: 0 auto;
+}
+.hero-title-box {
+    background-color: rgba(0, 0, 0, 0.75); padding: 20px 40px;
+    margin-bottom: 16px; display: inline-block;
+}
+.hero-title-box h1 { font-size: 64px; color: #F5F5F5; margin: 0; letter-spacing: 4px; }
+.hero-tagline {
+    font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 6px;
+    text-transform: uppercase; color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    padding: 10px 30px; display: inline-block; margin-bottom: 16px;
+}
+.hero-eyebrow {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(245, 245, 245, 0.55); margin-bottom: 36px; display: block;
+}
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+    padding: 14px 36px; background-color: #FFD700; color: #0D0D0D;
+    font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; display: inline-block;
+}
+.btn-primary:hover { background-color: #F5F5F5; }
+.btn-secondary {
+    padding: 14px 36px; border: 1px solid rgba(245, 245, 245, 0.4); color: #F5F5F5;
+    font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; display: inline-block;
+}
+.btn-secondary:hover { border-color: #FFD700; color: #FFD700; }
+
+/* ===== SECTIONS BASE ===== */
+section { padding: 100px 40px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+@media (max-width: 768px) {
+    #navbar { padding: 12px 20px; }
+    .hero-title-box h1 { font-size: 38px; }
+    .hero-title-box { padding: 14px 24px; }
+    section { padding: 80px 20px; }
+}
+
+/* ===== SECTIONS COMMUNES ===== */
+.section-container { max-width: 1100px; width: 100%; margin: 0 auto; }
+.section-label {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 6px;
+    color: #FFD700; margin-bottom: 12px; text-transform: uppercase;
+}
+.section-container h2 { font-size: 48px; color: #F5F5F5; margin-bottom: 8px; }
+.section-sub {
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(245,245,245,0.4); margin-bottom: 50px;
+}
+
+/* ===== BAR ===== */
+#bar { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; }
+.bar-ambiance {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center; margin-bottom: 80px;
+}
+.bar-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 40px; }
+.bar-image img { width: 100%; height: 400px; object-fit: cover; }
+.bar-infos { display: flex; flex-direction: column; gap: 16px; }
+.info-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid rgba(255,215,0,0.15);
+}
+.info-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; }
+.info-value { font-size: 13px; color: rgba(245,245,245,0.7); }
+.bloc-title {
+    font-size: 22px; letter-spacing: 3px; text-transform: uppercase;
+    color: #FFD700; margin-bottom: 32px; padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,215,0,0.2);
+}
+.bar-boissons { margin-bottom: 80px; }
+.boissons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.boisson-card {
+    background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1);
+    padding: 32px 24px; text-align: center; transition: border-color 0.3s ease;
+}
+.boisson-card:hover { border-color: rgba(255,215,0,0.4); }
+.boisson-icon { font-size: 40px; display: block; margin-bottom: 16px; }
+.boisson-card h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #F5F5F5; margin-bottom: 10px; }
+.boisson-card p { font-size: 12px; color: rgba(245,245,245,0.4); line-height: 1.6; }
+.bar-events { margin-bottom: 20px; }
+.events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.event-card {
+    background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1);
+    padding: 28px 24px; position: relative; transition: border-color 0.3s ease;
+}
+.event-card:hover { border-color: rgba(255,215,0,0.4); }
+.event-priv { border-color: rgba(255,215,0,0.25); }
+.event-date { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; display: block; margin-bottom: 12px; }
+.event-card h4 { font-size: 14px; letter-spacing: 1px; color: #F5F5F5; margin-bottom: 10px; text-transform: uppercase; }
+.event-card p { font-size: 12px; color: rgba(245,245,245,0.4); line-height: 1.6; margin-bottom: 16px; }
+.event-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,215,0,0.3); color: #FFD700; }
+.bar-discover-btn { text-align: center; margin: 40px 0; }
+.btn-toggle-bar {
+    background: transparent; border: 1px solid rgba(255,215,0,0.5); color: #FFD700;
+    font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; padding: 16px 48px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s ease;
+}
+.btn-toggle-bar:hover { background: rgba(255,215,0,0.08); }
+.btn-arrow { transition: transform 0.3s ease; display: inline-block; }
+.btn-toggle-bar.open .btn-arrow { transform: rotate(180deg); }
+.bar-extra { max-height: 0; overflow: hidden; transition: max-height 0.8s ease, opacity 0.5s ease; opacity: 0; }
+.bar-extra.open { max-height: 2000px; opacity: 1; }
+@media (max-width: 768px) {
+    .bar-ambiance { grid-template-columns: 1fr; gap: 40px; }
+    .boissons-grid, .events-grid { grid-template-columns: 1fr; }
+    .section-container h2 { font-size: 32px; }
+}
+
+/* ===== RESTAURATION ===== */
+#restauration {
+    position: relative; overflow: hidden;
+    background-color: #111111; min-height: 100vh; padding: 100px 40px;
+}
+.couverts-overlay {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    justify-content: center; gap: 40px; z-index: 10;
+    background-color: #111111; transition: background-color 0.5s ease 0.8s; pointer-events: none;
+}
+.couverts-overlay.open { background-color: transparent; }
+.couvert-gauche { width: 60px; height: 80%; transform: translateX(0); }
+.couvert-droite { width: 60px; height: 80%; transform: translateX(0); }
+.couvert-gauche svg, .couvert-droite svg { width: 100%; height: 100%; }
+.couverts-overlay.open .couvert-gauche { transform: translateX(-52vw); }
+.couverts-overlay.open .couvert-droite { transform: translateX(52vw); }
+.resto-content {
+    position: relative; z-index: 5; opacity: 0; transform: translateY(16px);
+    transition: opacity 0.3s ease 0.3s, transform 0.3s ease;
+}
+.resto-content.visible { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease; }
+.resto-content.hidden { opacity: 0; transform: translateY(16px); transition: opacity 0.2s ease, transform 0.2s ease; }
+.resto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.resto-image img { width: 100%; height: 450px; object-fit: cover; }
+.resto-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 40px; }
+.resto-cards { display: flex; flex-direction: column; gap: 20px; }
+.resto-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1); padding: 24px; position: relative; }
+.resto-card-soon { border-color: rgba(255,215,0,0.3); }
+.resto-card-icon { font-size: 24px; display: block; margin-bottom: 12px; }
+.resto-card h3 { font-size: 16px; letter-spacing: 2px; color: #F5F5F5; margin-bottom: 8px; text-transform: uppercase; }
+.resto-card p { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.5); margin-bottom: 0; }
+.badge-soon {
+    position: absolute; top: 16px; right: 16px; background-color: #FFD700;
+    color: #0D0D0D; font-size: 9px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 4px 10px;
+}
+@media (max-width: 768px) { .resto-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ===== MENUS DEMO ===== */
+.resto-menus { margin-top: 70px; }
+.menus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.menu-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.12); }
+.menu-header {
+    display: flex; align-items: center; gap: 14px; padding: 22px 28px;
+    border-bottom: 1px solid rgba(255,215,0,0.1);
+    background: linear-gradient(to right, rgba(255,215,0,0.06), transparent);
+}
+.menu-header-icon { font-size: 26px; }
+.menu-header h3 { font-size: 15px; letter-spacing: 2px; text-transform: uppercase; color: #F5F5F5; margin-bottom: 3px; }
+.menu-header p { font-size: 10px; letter-spacing: 2px; color: rgba(255,215,0,0.6); text-transform: uppercase; }
+.menu-body { padding: 24px 28px; }
+.menu-plat {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.menu-plat:last-of-type { border-bottom: none; }
+.plat-info { flex: 1; padding-right: 16px; }
+.plat-nom { font-size: 13px; color: #F5F5F5; margin-bottom: 3px; }
+.plat-desc { font-size: 11px; color: rgba(245,245,245,0.4); font-style: italic; }
+.plat-prix { font-family: 'Cinzel', serif; font-size: 14px; color: #FFD700; white-space: nowrap; }
+.menu-formule {
+    margin-top: 18px; padding: 14px 18px;
+    background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.15); text-align: center;
+}
+.menu-formule-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 6px; }
+.menu-formule-prix { font-family: 'Cinzel', serif; font-size: 22px; color: #FFD700; }
+.menu-formule-detail { font-size: 11px; letter-spacing: 1px; color: rgba(245,245,245,0.4); margin-top: 4px; }
+@media (max-width: 768px) { .menus-grid { grid-template-columns: 1fr; } }
+
+/* ===== HOTEL ===== */
+#hotel { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; position: relative; overflow: hidden; }
+
+/* Fond nuit pour la section hôtel uniquement */
+#hotel::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(20,25,60,0.5) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 80%, rgba(10,15,40,0.4) 0%, transparent 50%);
+}
+#hotel .section-container { position: relative; z-index: 1; }
+
+/* Étoiles légères */
+.hotel-stars-bg {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.hotel-stars-bg::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 8% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 6%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 38% 18%, rgba(255,255,255,0.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 4%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 14%, rgba(255,255,255,0.45) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82% 8%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14% 32%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 47% 25%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 66% 28%, rgba(255,255,255,0.3) 0%, transparent 100%);
+    animation: starsTwinkle 5s ease-in-out infinite alternate;
+}
+@keyframes starsTwinkle { 0%{opacity:0.6} 100%{opacity:1} }
+
+/* Nuages */
+.hotel-cloud {
+    position: absolute; border-radius: 50px; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(180,190,210,0.08), rgba(150,160,185,0.04));
+    animation: cloudDrift linear infinite; z-index: 0;
+}
+.hotel-cloud::before, .hotel-cloud::after {
+    content: ''; position: absolute; background: inherit; border-radius: 50%;
+}
+.hotel-cloud-1 { width: 180px; height: 45px; top: 10%; left: -200px; animation-duration: 35s; }
+.hotel-cloud-1::before { width: 80px; height: 65px; top: -28px; left: 25px; }
+.hotel-cloud-1::after { width: 60px; height: 50px; top: -18px; left: 85px; }
+.hotel-cloud-2 { width: 140px; height: 38px; top: 35%; left: -160px; animation-duration: 50s; animation-delay: -18s; }
+.hotel-cloud-2::before { width: 60px; height: 52px; top: -22px; left: 18px; }
+.hotel-cloud-2::after { width: 48px; height: 42px; top: -14px; left: 65px; }
+.hotel-cloud-3 { width: 210px; height: 52px; top: 62%; left: -240px; animation-duration: 42s; animation-delay: -9s; }
+.hotel-cloud-3::before { width: 95px; height: 78px; top: -36px; left: 38px; }
+.hotel-cloud-3::after { width: 72px; height: 62px; top: -26px; left: 115px; }
+@keyframes cloudDrift { from{left:-260px} to{left:calc(100% + 260px)} }
+
+/* Lune + bonnet */
+.lune-container {
+    position: absolute; top: 30px; right: 60px; z-index: 2;
+    animation: luneFlottement 7s ease-in-out infinite;
+}
+@keyframes luneFlottement { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.lune-bonnet { text-align: center; margin-bottom: -6px; position: relative; }
+.bonnet-corps {
+    width: 72px; height: 48px; margin: 0 auto;
+    background: linear-gradient(160deg, #c0392b 0%, #e74c3c 100%);
+    border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+    position: relative;
+}
+.bonnet-pompon {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle, #fff 40%, #ddd 100%);
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+.bonnet-bord {
+    width: 88px; height: 13px; margin: 0 auto;
+    background: repeating-linear-gradient(90deg, #c0392b 0px, #c0392b 7px, #e8b4b8 7px, #e8b4b8 14px);
+    border-radius: 3px;
+}
+.lune-visage {
+    width: 82px; height: 82px; border-radius: 50%; margin: 0 auto;
+    background: radial-gradient(circle at 35% 30%, #fef3c7 0%, #f5d77a 55%, #d4aa30 100%);
+    box-shadow: 0 0 30px rgba(254,243,199,0.35), 0 0 70px rgba(254,243,199,0.12);
+    position: relative;
+}
+.lune-yeux { position: absolute; top: 35px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px; }
+.lune-oeil { width: 5px; height: 2.5px; background: #7a5a10; border-radius: 50%; }
+.lune-joue { position: absolute; width: 9px; height: 5px; background: rgba(255,140,80,0.38); border-radius: 50%; top: 44px; }
+.lune-joue.gauche { left: 12px; }
+.lune-joue.droite { right: 12px; }
+.lune-sourire {
+    position: absolute; top: 50px; left: 50%; transform: translateX(-50%);
+    width: 18px; height: 7px; border-bottom: 2.5px solid #7a5a10; border-radius: 50%;
+}
+
+/* Chambres avec photos et prix en avant */
+.chambres-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-bottom: 70px; }
+.chambre-card { position: relative; overflow: hidden; }
+.chambre-img-wrap { position: relative; }
+.chambre-img-wrap img {
+    width: 100%; height: 250px; object-fit: cover; display: block;
+    filter: brightness(0.65) saturate(0.75);
+    transition: filter 0.35s;
+}
+.chambre-card:hover .chambre-img-wrap img { filter: brightness(0.8) saturate(0.9); }
+/* Lune déco sur chaque chambre */
+.chambre-lune-deco {
+    position: absolute; top: 12px; left: 14px;
+    font-size: 16px; opacity: 0.65; z-index: 2;
+}
+.chambre-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.96) 0%, transparent 100%);
+    padding: 18px 16px;
+}
+.chambre-nom { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: #F5F5F5; display: block; margin-bottom: 3px; }
+.chambre-desc { font-size: 11px; color: rgba(245,245,245,0.5); display: block; margin-bottom: 10px; }
+/* PRIX MIS EN AVANT */
+.chambre-prix {
+    display: inline-flex; align-items: baseline; gap: 5px;
+    background-color: #FFD700; color: #0D0D0D;
+    padding: 5px 12px;
+}
+.chambre-prix-chiffre { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; }
+.chambre-prix-unit { font-size: 10px; letter-spacing: 1px; font-weight: 600; }
+
+.hotel-accroche {
+    text-align: center; margin-bottom: 60px; padding: 30px;
+    border-left: 3px solid #FFD700; border-right: 3px solid #FFD700;
+}
+.hotel-accroche p { font-family: 'Cinzel', serif; font-size: 18px; color: rgba(245,245,245,0.8); font-style: italic; line-height: 1.6; }
+.hotel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
+.hotel-image img { width: 100%; height: 450px; object-fit: cover; }
+.hotel-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 32px; }
+.hotel-avantages { display: flex; flex-direction: column; gap: 20px; }
+.avantage-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,215,0,0.1); }
+.avantage-icon { font-size: 22px; min-width: 32px; }
+.avantage-title { display: block; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFD700; margin-bottom: 4px; }
+.avantage-desc { display: block; font-size: 12px; color: rgba(245,245,245,0.5); line-height: 1.5; }
+.hotel-avis { margin-bottom: 80px; }
+.avis-grid { display: grid; grid-template-columns: 1fr 1fr 0.6fr; gap: 24px; align-items: center; }
+.avis-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1); padding: 28px 24px; }
+.avis-stars { color: #FFD700; font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+.avis-card p { font-size: 13px; color: rgba(245,245,245,0.6); line-height: 1.7; font-style: italic; margin-bottom: 12px; }
+.avis-author { font-size: 11px; letter-spacing: 2px; color: #FFD700; }
+.avis-note { text-align: center; padding: 40px 24px; }
+.avis-score { font-family: 'Cinzel', serif; font-size: 64px; font-weight: 700; color: #FFD700; line-height: 1; margin-bottom: 8px; }
+.avis-source { font-size: 11px; letter-spacing: 2px; color: rgba(245,245,245,0.4); text-transform: uppercase; display: block; margin-top: 8px; }
+.hotel-resa { margin-bottom: 20px; }
+.resa-box { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.15); padding: 40px; }
+.resa-fields { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 20px; align-items: end; margin-bottom: 16px; }
+.resa-field { display: flex; flex-direction: column; gap: 8px; }
+.resa-field label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; }
+.resa-field input, .resa-field select {
+    background-color: #0D0D0D; border: 1px solid rgba(255,215,0,0.2);
+    color: #F5F5F5; padding: 12px 16px; font-family: 'Josefin Sans', sans-serif; font-size: 13px; outline: none;
+}
+.resa-field input[type="number"] { -moz-appearance: textfield; }
+.resa-field input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+.resa-field input:focus, .resa-field select:focus { border-color: rgba(255,215,0,0.5); }
+.btn-resa {
+    background-color: #FFD700; color: #0D0D0D; border: none; padding: 14px 28px;
+    font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease; white-space: nowrap;
+}
+.btn-resa:hover { background-color: #F5F5F5; }
+.resa-note { font-size: 11px; letter-spacing: 2px; color: rgba(245,245,245,0.3); text-transform: uppercase; text-align: center; }
+@media (max-width: 768px) {
+    .hotel-grid, .avis-grid { grid-template-columns: 1fr; }
+    .resa-fields { grid-template-columns: 1fr; }
+    .chambres-grid { grid-template-columns: 1fr; }
+    .lune-container { right: 10px; top: 60px; }
+}
+
+/* ===== HISTOIRE ===== */
+#histoire { background-color: #111111; min-height: auto; padding: 100px 40px; }
+.histoire-inner { display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: start; }
+.histoire-annee {
+    font-family: 'Cinzel', serif; font-size: clamp(70px, 9vw, 110px);
+    color: transparent; -webkit-text-stroke: 1px rgba(255,215,0,0.18);
+    line-height: 1; white-space: nowrap;
+}
+.histoire-text p { font-size: 15px; line-height: 1.9; color: rgba(245,245,245,0.65); margin-bottom: 22px; }
+.histoire-text p:first-child { font-size: 18px; color: rgba(245,245,245,0.85); font-style: italic; }
+.histoire-frise { display: flex; margin-top: 50px; border-top: 1px solid rgba(255,215,0,0.1); overflow: hidden; }
+.frise-item { flex: 1; padding: 18px 14px; border-right: 1px solid rgba(255,215,0,0.06); }
+.frise-item:last-child { border-right: none; }
+.frise-date { font-family: 'Cinzel', serif; font-size: 11px; color: #FFD700; letter-spacing: 1px; display: block; margin-bottom: 6px; }
+.frise-texte { font-size: 11px; color: rgba(245,245,245,0.45); line-height: 1.5; }
+@media (max-width: 768px) {
+    .histoire-inner { grid-template-columns: 1fr; gap: 30px; }
+    .histoire-annee { font-size: 60px; }
+}
+
+/* ===== A PROPOS ===== */
+#apropos { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; }
+.apropos-texte { max-width: 700px; margin-bottom: 60px; }
+.apropos-texte p { font-size: 15px; line-height: 1.9; color: rgba(245,245,245,0.65); margin-bottom: 20px; }
+.apropos-texte p:first-child { font-size: 20px; font-family: 'Cinzel', serif; font-style: italic; color: rgba(245,245,245,0.85); }
+.apropos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.apropos-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.08); padding: 32px 24px; }
+.apropos-icon { font-size: 36px; display: block; margin-bottom: 16px; }
+.apropos-card h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #FFD700; margin-bottom: 12px; }
+.apropos-card p { font-size: 12px; line-height: 1.7; color: rgba(245,245,245,0.5); }
+@media (max-width: 768px) { .apropos-grid { grid-template-columns: 1fr; } }
+
+/* ===== CONTACT ===== */
+#contact { background-color: #111111; min-height: auto; padding: 100px 40px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact-infos { display: flex; flex-direction: column; gap: 0; }
+.contact-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,215,0,0.1); }
+.contact-icon { font-size: 22px; min-width: 32px; }
+.contact-title { display: block; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; margin-bottom: 6px; }
+.contact-value { display: block; font-size: 13px; color: rgba(245,245,245,0.6); line-height: 1.6; }
+.contact-map iframe { width: 100%; height: 450px; filter: grayscale(30%) brightness(0.85); }
+
+/* ===== FOOTER ===== */
+footer { background-color: #0A0A0A; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); }
+footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,245,245,0.3); }
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+    <div class="nav-logo" id="burger">
+        <div class="logo-circle"><span class="logo-letter">N</span></div>
+        <span class="menu-label">MENU</span>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="#bar">Le Bar</a></li>
+        <li id="nav-resto-item">
+            <a href="#restauration" id="resto-link">Restauration</a>
+            <div class="sous-menu-resto" id="sous-menu-resto">
+                <a href="#restauration">Le Food</a>
+                <a href="#restauration">Menu Local</a>
+                <a href="#restauration">Menu Étudiant</a>
+            </div>
+        </li>
+        <li class="nav-item-hotel" id="nav-hotel-item">
+            <a href="#hotel" id="hotel-link">Hôtel</a>
+            <div class="sous-menu" id="sous-menu-hotel">
+                <a href="#hotel">Nos chambres</a>
+                <a href="#hotel">Réserver</a>
+                <a href="#hotel">Tarifs</a>
+                <a href="#hotel">Infos pratiques</a>
+            </div>
+        </li>
+        <li><a href="#histoire">Notre histoire</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#contact">Nous trouver</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-content">
+        <div class="hero-title-box">
+            <h1>Le Napoléon</h1>
+        </div>
+        <p class="hero-tagline">Bar · Hôtel · Restaurant</p>
+        <p class="hero-eyebrow">Accessible et proche de la gare SNCF de Gap</p>
+        <div class="hero-buttons">
+            <a href="#bar" class="btn-primary">Découvrir</a>
+            <a href="#contact" class="btn-secondary">Nous trouver</a>
+        </div>
+    </div>
+    <div class="hero-overlay"></div>
+</section>
+
+<!-- BAR -->
+<section id="bar">
+    <div class="section-container">
+        <div class="section-label">01</div>
+        <h2>Le Bar</h2>
+        <p class="section-sub">Un lieu de vie au cœur de Gap</p>
+        <div class="bar-ambiance">
+            <div class="bar-text">
+                <p>Que vous soyez de passage ou habitué du quartier, le bar du Napoléon vous accueille dans une ambiance chaleureuse et conviviale. Terrasse en été, intérieur cosy en hiver.</p>
+                <div class="bar-infos">
+                    <div class="info-item"><span class="info-label">Horaires</span><span class="info-value">Tous les jours — 7h à 23h</span></div>
+                    <div class="info-item"><span class="info-label">Terrasse</span><span class="info-value">Disponible aux beaux jours</span></div>
+                    <div class="info-item"><span class="info-label">Ambiance</span><span class="info-value">Locale, conviviale, authentique</span></div>
+                </div>
+            </div>
+            <div class="bar-image">
+                <img src="https://images.pexels.com/photos/2111016/pexels-photo-2111016.jpeg" alt="Bar Le Napoléon">
+            </div>
+        </div>
+        <div class="bar-discover-btn">
+            <button class="btn-toggle-bar" id="btnBar">Découvrir le bar <span class="btn-arrow">↓</span></button>
+        </div>
+        <div class="bar-extra" id="barExtra">
+            <div class="bar-boissons">
+                <h3 class="bloc-title">Nos incontournables</h3>
+                <div class="boissons-grid">
+                    <div class="boisson-card"><span class="boisson-icon">🍺</span><h4>Bière pression</h4><p>Fraîche et généreuse, servie comme il se doit.</p></div>
+                    <div class="boisson-card"><span class="boisson-icon">☕</span><h4>Café du comptoir</h4><p>Le rendez-vous des habitués, chaque matin.</p></div>
+                    <div class="boisson-card"><span class="boisson-icon">🥃</span><h4>Cocktail maison</h4><p>La signature du Napoléon — à découvrir.</p></div>
+                </div>
+            </div>
+            <div class="bar-events">
+                <h3 class="bloc-title">Agenda & Événements</h3>
+                <div class="events-grid">
+                    <div class="event-card"><span class="event-date">À venir</span><h4>Soirée DJ</h4><p>Une nuit de musique et de bonne humeur au Napoléon.</p><span class="event-badge">Soirée</span></div>
+                    <div class="event-card"><span class="event-date">À venir</span><h4>Retransmission match</h4><p>Vivez les grands matchs en direct avec nous.</p><span class="event-badge">Sport</span></div>
+                    <div class="event-card event-priv"><span class="event-date">Sur réservation</span><h4>Privatisation</h4><p>Le bar disponible pour vos événements privés et groupes.</p><span class="event-badge">Privé</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESTAURATION -->
+<section id="restauration">
+    <div class="couverts-overlay" id="couverts">
+        <div class="couvert-gauche">
+            <svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="27" y="0" width="6" height="180" rx="3" fill="#FFD700"/>
+                <rect x="10" y="0" width="6" height="80" rx="3" fill="#FFD700"/>
+                <rect x="44" y="0" width="6" height="80" rx="3" fill="#FFD700"/>
+                <rect x="10" y="80" width="40" height="6" rx="3" fill="#FFD700"/>
+                <rect x="27" y="180" width="6" height="120" rx="3" fill="#FFD700"/>
+            </svg>
+        </div>
+        <div class="couvert-droite">
+            <svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="27" y="0" width="6" height="300" rx="3" fill="#FFD700"/>
+                <path d="M33 0 Q60 60 33 120" fill="#FFD700"/>
+            </svg>
+        </div>
+    </div>
+    <div class="section-container resto-content" id="resto-content">
+        <div class="section-label">02</div>
+        <h2>Restauration</h2>
+        <p class="section-sub">Une cuisine généreuse, des saveurs authentiques</p>
+        <div class="resto-grid">
+            <div class="resto-image">
+                <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg" alt="Restauration Le Napoléon">
+            </div>
+            <div class="resto-text">
+                <p>Découvrez notre concept food pensé pour vous régaler à toute heure. Des produits frais, des recettes généreuses, dans un cadre convivial et chaleureux.</p>
+                <div class="resto-cards">
+                    <div class="resto-card"><span class="resto-card-icon">🍽️</span><h3>Le Food</h3><p>Petite restauration généreuse et savoureuse, disponible tous les jours.</p></div>
+                    <div class="resto-card resto-card-soon"><span class="resto-card-icon">🔜</span><h3>Buffet à volonté</h3><p>Bientôt disponible — restez connectés pour ne pas rater l'ouverture.</p><span class="badge-soon">Bientôt</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENUS -->
+        <div class="resto-menus">
+            <h3 class="bloc-title">Nos menus</h3>
+            <div class="menus-grid">
+                <div class="menu-card">
+                    <div class="menu-header">
+                        <span class="menu-header-icon">🏔️</span>
+                        <div><h3>Menu Local</h3><p>Saveurs des Hautes-Alpes</p></div>
+                    </div>
+                    <div class="menu-body">
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Tourte au fromage de Chorges</div><div class="plat-desc">Fromage AOP, pâte feuilletée maison</div></div><div class="plat-prix">9€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Daube d'agneau du Champsaur</div><div class="plat-desc">Herbes de montagne, pommes de terre sautées</div></div><div class="plat-prix">16€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Truite de l'Ubaye</div><div class="plat-desc">Filet grillé, beurre aux amandes, légumes de saison</div></div><div class="plat-prix">15€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Gratin de blettes au reblochon</div><div class="plat-desc">Légumes locaux, fromage fondu</div></div><div class="plat-prix">12€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Tarte aux noix de Grenoble</div><div class="plat-desc">Crème pralinée, noix IGP</div></div><div class="plat-prix">6€</div></div>
+                        <div class="menu-formule">
+                            <div class="menu-formule-label">Formule du jour</div>
+                            <div class="menu-formule-prix">27€</div>
+                            <div class="menu-formule-detail">Entrée + Plat + Dessert</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-header">
+                        <span class="menu-header-icon">🎒</span>
+                        <div><h3>Menu Étudiant</h3><p>Lycée & Collège de Gap</p></div>
+                    </div>
+                    <div class="menu-body">
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Burger Napoléon</div><div class="plat-desc">Steak haché, cheddar, salade, frites</div></div><div class="plat-prix">9€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Croque-monsieur maison</div><div class="plat-desc">Jambon, gruyère fondu, salade verte</div></div><div class="plat-prix">7€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Pasta du jour</div><div class="plat-desc">Sauce tomate ou crème, recette maison</div></div><div class="plat-prix">8€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Panini grillé</div><div class="plat-desc">Thon-mozzarella ou jambon-chèvre</div></div><div class="plat-prix">6€</div></div>
+                        <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Fondant au chocolat</div><div class="plat-desc">Coulant maison, boule de glace vanille</div></div><div class="plat-prix">4€</div></div>
+                        <div class="menu-formule">
+                            <div class="menu-formule-label">Formule Étudiant</div>
+                            <div class="menu-formule-prix">12€</div>
+                            <div class="menu-formule-detail">Plat + Dessert + Boisson · Sur présentation carte</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOTEL -->
+<section id="hotel">
+    <div class="hotel-stars-bg"></div>
+    <div class="hotel-cloud hotel-cloud-1"></div>
+    <div class="hotel-cloud hotel-cloud-2"></div>
+    <div class="hotel-cloud hotel-cloud-3"></div>
+
+    <!-- LUNE avec bonnet -->
+    <div class="lune-container">
+        <div class="lune-bonnet">
+            <div class="bonnet-corps"><div class="bonnet-pompon"></div></div>
+            <div class="bonnet-bord"></div>
+        </div>
+        <div class="lune-visage">
+            <div class="lune-yeux"><div class="lune-oeil"></div><div class="lune-oeil"></div></div>
+            <div class="lune-joue gauche"></div>
+            <div class="lune-joue droite"></div>
+            <div class="lune-sourire"></div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <div class="section-label">03</div>
+        <h2>L'Hôtel</h2>
+        <p class="section-sub">Confort et simplicité au cœur de Gap</p>
+
+        <div class="hotel-accroche">
+            <p>"Un séjour simple, une adresse authentique — bienvenue chez vous à Gap."</p>
+        </div>
+
+        <!-- CHAMBRES avec prix en avant -->
+        <h3 class="bloc-title">Nos chambres</h3>
+        <div class="chambres-grid">
+            <div class="chambre-card">
+                <div class="chambre-img-wrap">
+                    <span class="chambre-lune-deco">🌙</span>
+                    <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Chambre Standard">
+                    <div class="chambre-overlay">
+                        <span class="chambre-nom">Chambre Standard</span>
+                        <span class="chambre-desc">1 lit double · Salle de bain privée</span>
+                        <div class="chambre-prix"><span class="chambre-prix-chiffre">55€</span><span class="chambre-prix-unit">/ nuit</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="chambre-card">
+                <div class="chambre-img-wrap">
+                    <span class="chambre-lune-deco">🌙</span>
+                    <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg" alt="Chambre Supérieure">
+                    <div class="chambre-overlay">
+                        <span class="chambre-nom">Chambre Supérieure</span>
+                        <span class="chambre-desc">1 lit king · Vue ville · Bureau</span>
+                        <div class="chambre-prix"><span class="chambre-prix-chiffre">75€</span><span class="chambre-prix-unit">/ nuit</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="chambre-card">
+                <div class="chambre-img-wrap">
+                    <span class="chambre-lune-deco">🌙</span>
+                    <img src="https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg" alt="Chambre Familiale">
+                    <div class="chambre-overlay">
+                        <span class="chambre-nom">Chambre Familiale</span>
+                        <span class="chambre-desc">2 lits · Idéal famille · Spacieuse</span>
+                        <div class="chambre-prix"><span class="chambre-prix-chiffre">95€</span><span class="chambre-prix-unit">/ nuit</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFOS + PHOTO -->
+        <div class="hotel-grid">
+            <div class="hotel-image">
+                <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Chambre Hôtel Le Napoléon">
+            </div>
+            <div class="hotel-text">
+                <p>Idéalement situé à 5 minutes à pied de la gare SNCF de Gap, le Napoléon est l'étape parfaite pour vos déplacements professionnels ou touristiques.</p>
+                <div class="hotel-avantages">
+                    <div class="avantage-item"><span class="avantage-icon">🚉</span><div><span class="avantage-title">À 5 min de la gare</span><span class="avantage-desc">Accès facile, stationnement à proximité</span></div></div>
+                    <div class="avantage-item"><span class="avantage-icon">🏙️</span><div><span class="avantage-title">Centre-ville de Gap</span><span class="avantage-desc">Commerces et activités à pied</span></div></div>
+                    <div class="avantage-item"><span class="avantage-icon">💰</span><div><span class="avantage-title">À partir de 55€ / nuit</span><span class="avantage-desc">Meilleur prix garanti en réservation directe</span></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVIS -->
+        <div class="hotel-avis">
+            <h3 class="bloc-title">Ce qu'ils en disent</h3>
+            <div class="avis-grid">
+                <div class="avis-card"><div class="avis-stars">★★★★★</div><p>"Un très bon accueil et le patron au top. Je recommande !"</p><span class="avis-author">— Salvatore B.</span></div>
+                <div class="avis-card"><div class="avis-stars">★★★★★</div><p>"En transit à Gap, j'ai trouvé ici exactement ce qu'il me fallait. Simple, efficace, chaleureux."</p><span class="avis-author">— Julien D.</span></div>
+                <div class="avis-card avis-note"><div class="avis-score">4.2</div><div class="avis-stars">★★★★☆</div><span class="avis-source">32 avis Google</span></div>
+            </div>
+        </div>
+
+        <!-- RÉSERVATION -->
+        <div class="hotel-resa">
+            <h3 class="bloc-title">Réserver une chambre</h3>
+            <div class="resa-box">
+                <div class="resa-fields">
+                    <div class="resa-field"><label>Arrivée</label><input type="date"></div>
+                    <div class="resa-field"><label>Départ</label><input type="date"></div>
+                    <div class="resa-field"><label>Personnes</label><input type="number" min="1" max="10" value="1" placeholder="Ex: 2"></div>
+                    <button class="btn-resa">Vérifier disponibilité</button>
+                </div>
+                <p class="resa-note">Réservation directe — meilleur prix garanti · 0% de commission</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOTRE HISTOIRE -->
+<section id="histoire">
+    <div class="section-container">
+        <div class="section-label">04</div>
+        <h2>Notre histoire</h2>
+        <p class="section-sub">Une adresse ancrée dans le cœur de Gap</p>
+        <div class="histoire-inner">
+            <div class="histoire-annee">1970</div>
+            <div class="histoire-text">
+                <p>Le Napoléon, c'est une histoire de quartier. Depuis des décennies, ce bar-hôtel-restaurant est une halte incontournable pour les Gapençais et les voyageurs de passage dans les Hautes-Alpes.</p>
+                <p>Niché à deux pas de la gare, il a vu défiler des générations d'habitués, de travailleurs, de randonneurs et de touristes venus découvrir la montagne provençale. Chaque comptoir, chaque chambre porte la mémoire de ces rencontres.</p>
+                <p>Aujourd'hui sous une direction renouvelée, le Napoléon entre dans une nouvelle ère — sans oublier ses racines. Même chaleur, même authenticité, avec une ambition : vous offrir le meilleur de Gap.</p>
+            </div>
+        </div>
+        <div class="histoire-frise">
+            <div class="frise-item"><span class="frise-date">Années 70</span><span class="frise-texte">Ouverture du bar-hôtel au cœur de Gap</span></div>
+            <div class="frise-item"><span class="frise-date">Années 90</span><span class="frise-texte">Agrandissement et ouverture de la restauration</span></div>
+            <div class="frise-item"><span class="frise-date">2010</span><span class="frise-texte">Rénovation des chambres, modernisation</span></div>
+            <div class="frise-item"><span class="frise-date">2024</span><span class="frise-texte">Reprise par un nouveau propriétaire</span></div>
+            <div class="frise-item"><span class="frise-date">2025</span><span class="frise-texte">Nouvelle carte, nouveau site — même âme</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos">
+    <div class="section-container">
+        <div class="section-label">05</div>
+        <h2>À propos de nous</h2>
+        <p class="section-sub">Une équipe locale au service de votre séjour</p>
+        <div class="apropos-texte">
+            <p>"Nous croyons qu'un bon établissement, c'est avant tout des humains qui accueillent d'autres humains."</p>
+            <p>Le Napoléon c'est une petite équipe locale passionnée, qui connaît Gap par cœur et veut vous la faire découvrir. Que ce soit pour un café le matin, un repas entre amis ou une nuit avant de partir en montagne — on est là pour que vous vous sentiez bien.</p>
+        </div>
+        <div class="apropos-grid">
+            <div class="apropos-card"><span class="apropos-icon">👨‍🍳</span><h4>La cuisine</h4><p>Recettes généreuses, produits locaux des Hautes-Alpes. On cuisine comme à la maison, en mieux.</p></div>
+            <div class="apropos-card"><span class="apropos-icon">🛎️</span><h4>L'accueil</h4><p>Disponibles 7j/7 pour vous accueillir, vous guider et vous faire sentir comme chez vous à Gap.</p></div>
+            <div class="apropos-card"><span class="apropos-icon">🏔️</span><h4>Le territoire</h4><p>On connaît les meilleurs coins des Hautes-Alpes. Ski, rando, coins secrets — on vous conseille volontiers.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-container">
+        <div class="section-label">06</div>
+        <h2>Nous trouver</h2>
+        <p class="section-sub">Au cœur de Gap, à 5 min de la gare</p>
+        <div class="contact-grid">
+            <div class="contact-infos">
+                <div class="contact-item"><span class="contact-icon">📍</span><div><span class="contact-title">Adresse</span><span class="contact-value">19 Avenue Commandant Dumont<br>05000 Gap, Hautes-Alpes</span></div></div>
+                <div class="contact-item"><span class="contact-icon">🚉</span><div><span class="contact-title">Gare SNCF de Gap</span><span class="contact-value">À 5 minutes à pied — idéal pour les voyageurs</span></div></div>
+                <div class="contact-item"><span class="contact-icon">📞</span><div><span class="contact-title">Téléphone</span><span class="contact-value">À venir</span></div></div>
+                <div class="contact-item"><span class="contact-icon">🕐</span><div><span class="contact-title">Horaires bar</span><span class="contact-value">Tous les jours — 7h à 23h</span></div></div>
+                <a href="https://maps.google.com/?q=19+Avenue+Commandant+Dumont+Gap" target="_blank" class="btn-primary" style="margin-top: 32px; display: inline-block;">Ouvrir dans Google Maps</a>
+            </div>
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.5!2d6.0835!3d44.5587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cb3c!2sBar+Le+Napol%C3%A9on+Gap!5e0!3m2!1sfr!2sfr!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Bar Le Napoléon — Gap, Hautes-Alpes — Site réalisé par <a href="https://getdbstudio.fr" style="color: #FFD700;">DB Studio</a></p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // === NAVBAR — JS original exact ===
+    const logo = document.querySelector('.logo-circle');
+    const navMenu = document.getElementById('nav-menu');
+    const hotelLink = document.getElementById('hotel-link');
+    const sousMenu = document.getElementById('sous-menu-hotel');
+
+    logo.addEventListener('click', () => {
+        logo.classList.add('spin');
+        setTimeout(() => logo.classList.remove('spin'), 600);
+        navMenu.classList.toggle('open');
+    });
+
+    // Sous-menu Hôtel
+    hotelLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        sousMenu.classList.toggle('open');
+    });
+
+    // Sous-menu Restauration (nouveau)
+    const restoLink = document.getElementById('resto-link');
+    const sousMenuResto = document.getElementById('sous-menu-resto');
+    restoLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        sousMenuResto.classList.toggle('open');
+        sousMenu.classList.remove('open');
+    });
+
+    // Fermer menu au clic sur un lien sauf hôtel et resto
+    navMenu.querySelectorAll('a').forEach(link => {
+        if (link.id !== 'hotel-link' && link.id !== 'resto-link') {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+                sousMenu.classList.remove('open');
+                sousMenuResto.classList.remove('open');
+            });
+        }
+    });
+
+    // === COUVERTS RESTAURATION — JS original exact ===
+    const couvertGauche = document.querySelector('.couvert-gauche');
+    const couvertDroite = document.querySelector('.couvert-droite');
+    const restoSection = document.getElementById('restauration');
+    const restoContent = document.getElementById('resto-content');
+    const couverts = document.getElementById('couverts');
+
+    window.addEventListener('scroll', () => {
+        const rect = restoSection.getBoundingClientRect();
+        const sectionHeight = restoSection.offsetHeight;
+        const progress = Math.min(Math.max(-rect.top / (sectionHeight * 0.15), 0), 1);
+        const maxTranslate = 55;
+        const translate = progress * maxTranslate;
+        couvertGauche.style.transform = `translateX(-${translate}vw)`;
+        couvertDroite.style.transform = `translateX(${translate}vw)`;
+        if (progress > 0.35) {
+            restoContent.classList.add('visible');
+            restoContent.classList.remove('hidden');
+            couverts.classList.add('open');
+        } else {
+            restoContent.classList.remove('visible');
+            restoContent.classList.add('hidden');
+            couverts.classList.remove('open');
+        }
+    });
+
+    // === BAR TOGGLE — JS original exact ===
+    const btnBar = document.getElementById('btnBar');
+    const barExtra = document.getElementById('barExtra');
+    btnBar.addEventListener('click', () => {
+        btnBar.classList.toggle('open');
+        barExtra.classList.toggle('open');
+        if (btnBar.classList.contains('open')) {
+            btnBar.querySelector('.btn-arrow').textContent = '↑';
+            btnBar.firstChild.textContent = 'Refermer ';
+        } else {
+            btnBar.querySelector('.btn-arrow').textContent = '↓';
+            btnBar.firstChild.textContent = 'Découvrir le bar ';
+        }
+    });
+
+});
+</script>
+</body>
+</html>
