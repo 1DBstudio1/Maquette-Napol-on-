@@ -17,7 +17,7 @@ a { text-decoration: none; color: inherit; }
 #navbar {
     position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     display: flex; align-items: center; justify-content: center;
-    padding: 18px 40px;
+    padding: 8px 40px;
     background-color: rgba(13, 13, 13, 0.95);
     border-bottom: 1px solid rgba(255, 215, 0, 0.15);
 }
@@ -36,7 +36,7 @@ a { text-decoration: none; color: inherit; }
 }
 .logo-circle {
     animation: pulse 2.5s ease-in-out infinite;
-    width: 90px; height: 90px; border-radius: 50%;
+    width: 60px; height: 60px; border-radius: 50%;
     background-image: url('napoleon-logo.jpg');
     background-color: transparent; background-size: cover; background-position: center;
     display: flex; align-items: center; justify-content: center;
@@ -213,22 +213,21 @@ section { padding: 100px 40px; min-height: 100vh; display: flex; align-items: ce
     background-color: #111111; min-height: 100vh; padding: 100px 40px;
 }
 .couverts-overlay {
-    position: absolute; inset: 0; display: flex; align-items: center;
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 100vh; display: flex; align-items: center;
     justify-content: center; gap: 40px; z-index: 10;
-    background-color: #111111; transition: background-color 0.5s ease 0.8s; pointer-events: none;
+    pointer-events: none;
 }
-.couverts-overlay.open { background-color: transparent; }
-.couvert-gauche { width: 60px; height: 80%; transform: translateX(0); }
-.couvert-droite { width: 60px; height: 80%; transform: translateX(0); }
+.couvert-gauche { width: 50px; height: 260px; transform: translateX(0); transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+.couvert-droite { width: 50px; height: 260px; transform: translateX(0); transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
 .couvert-gauche svg, .couvert-droite svg { width: 100%; height: 100%; }
-.couverts-overlay.open .couvert-gauche { transform: translateX(-52vw); }
-.couverts-overlay.open .couvert-droite { transform: translateX(52vw); }
+#restauration.animate .couvert-gauche { transform: translateX(-55vw); }
+#restauration.animate .couvert-droite { transform: translateX(55vw); }
 .resto-content {
-    position: relative; z-index: 5; opacity: 0; transform: translateY(16px);
-    transition: opacity 0.3s ease 0.3s, transform 0.3s ease;
+    position: relative; z-index: 5; opacity: 0; transform: translateY(20px);
+    transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s;
 }
-.resto-content.visible { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease; }
-.resto-content.hidden { opacity: 0; transform: translateY(16px); transition: opacity 0.2s ease, transform 0.2s ease; }
+#restauration.animate .resto-content { opacity: 1; transform: translateY(0); }
 .resto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .resto-image img { width: 100%; height: 450px; object-fit: cover; }
 .resto-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 40px; }
@@ -275,6 +274,14 @@ section { padding: 100px 40px; min-height: 100vh; display: flex; align-items: ce
 .menu-formule-prix { font-family: 'Cinzel', serif; font-size: 22px; color: #FFD700; }
 .menu-formule-detail { font-size: 11px; letter-spacing: 1px; color: rgba(245,245,245,0.4); margin-top: 4px; }
 @media (max-width: 768px) { .menus-grid { grid-template-columns: 1fr; } }
+
+/* Click & Collect */
+.click-collect { margin-top: 70px; }
+.cc-box { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.12); padding: 40px; }
+.cc-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 28px; }
+.cc-infos { display: flex; flex-direction: column; gap: 0; }
+.cc-icon { font-size: 80px; opacity: 0.4; }
+@media (max-width: 768px) { .cc-box { grid-template-columns: 1fr; } .cc-icon { display: none; } }
 
 /* ===== HOTEL ===== */
 #hotel { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; position: relative; overflow: hidden; }
@@ -510,8 +517,8 @@ footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; colo
             <a href="#restauration" id="resto-link">Restauration</a>
             <div class="sous-menu-resto" id="sous-menu-resto">
                 <a href="#restauration">Le Food</a>
-                <a href="#restauration">Menu Local</a>
-                <a href="#restauration">Menu Étudiant</a>
+                <a href="#menus">Nos menus</a>
+                <a href="#click-collect">Click & Collect</a>
             </div>
         </li>
         <li class="nav-item-hotel" id="nav-hotel-item">
@@ -625,7 +632,7 @@ footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; colo
         </div>
 
         <!-- MENUS -->
-        <div class="resto-menus">
+        <div class="resto-menus" id="menus">
             <h3 class="bloc-title">Nos menus</h3>
             <div class="menus-grid">
                 <div class="menu-card">
@@ -666,10 +673,24 @@ footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; colo
                 </div>
             </div>
         </div>
+        <!-- CLICK & COLLECT -->
+        <div class="click-collect" id="click-collect">
+            <h3 class="bloc-title">Click & Collect</h3>
+            <div class="cc-box">
+                <div class="cc-text">
+                    <p>Commandez à l'avance, récupérez quand vous voulez. Idéal pour les pauses déjeuner rapides ou les repas à emporter.</p>
+                    <div class="cc-infos">
+                        <div class="info-item"><span class="info-label">Retrait</span><span class="info-value">30 min après commande</span></div>
+                        <div class="info-item"><span class="info-label">Horaires</span><span class="info-value">12h – 14h · 19h – 21h</span></div>
+                        <div class="info-item"><span class="info-label">Contact</span><span class="info-value">Par téléphone ou sur place</span></div>
+                    </div>
+                    <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:30px;">Commander par téléphone</a>
+                </div>
+                <div class="cc-icon">🥡</div>
+            </div>
+        </div>
     </div>
 </section>
-
-<!-- HOTEL -->
 <section id="hotel">
     <div class="hotel-stars-bg"></div>
     <div class="hotel-cloud hotel-cloud-1"></div>
@@ -886,31 +907,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // === COUVERTS RESTAURATION — JS original exact ===
-    const couvertGauche = document.querySelector('.couvert-gauche');
-    const couvertDroite = document.querySelector('.couvert-droite');
+    // === COUVERTS — IntersectionObserver ===
     const restoSection = document.getElementById('restauration');
-    const restoContent = document.getElementById('resto-content');
-    const couverts = document.getElementById('couverts');
-
-    window.addEventListener('scroll', () => {
-        const rect = restoSection.getBoundingClientRect();
-        const sectionHeight = restoSection.offsetHeight;
-        const progress = Math.min(Math.max(-rect.top / (sectionHeight * 0.15), 0), 1);
-        const maxTranslate = 55;
-        const translate = progress * maxTranslate;
-        couvertGauche.style.transform = `translateX(-${translate}vw)`;
-        couvertDroite.style.transform = `translateX(${translate}vw)`;
-        if (progress > 0.35) {
-            restoContent.classList.add('visible');
-            restoContent.classList.remove('hidden');
-            couverts.classList.add('open');
-        } else {
-            restoContent.classList.remove('visible');
-            restoContent.classList.add('hidden');
-            couverts.classList.remove('open');
-        }
-    });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                restoSection.classList.add('animate');
+            } else {
+                restoSection.classList.remove('animate');
+            }
+        });
+    }, { threshold: 0.15 });
+    observer.observe(restoSection);
 
     // === BAR TOGGLE — JS original exact ===
     const btnBar = document.getElementById('btnBar');
