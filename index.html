@@ -71,7 +71,7 @@
 /* ===== RESET & BASE ===== */
 
 - { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
   body { background-color: #0D0D0D; color: #F5F5F5; font-family: ‘Josefin Sans’, sans-serif; font-weight: 300; overflow-x: hidden; }
   h1, h2, h3 { font-family: ‘Cinzel’, serif; font-weight: 700; }
   a { text-decoration: none; color: inherit; }
@@ -313,10 +313,10 @@ background-color: #111111; min-height: 100vh; padding: 100px 20px;
 display: flex; align-items: flex-start; justify-content: center;
 }
 .couverts-overlay {
-position: absolute; top: 0; left: 0; right: 0;
+position: absolute; top: 0; left: 0; right: 0; width: 100%;
 height: 100vh; display: flex; align-items: center;
 justify-content: center; gap: 40px; z-index: 10;
-pointer-events: none;
+pointer-events: none; overflow: hidden;
 }
 .couvert-gauche { width: 50px; height: 260px; transform: translateX(0); transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
 .couvert-droite { width: 50px; height: 260px; transform: translateX(0); transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
@@ -812,75 +812,6 @@ footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; colo
             <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Evian</div></div><div class="plat-prix">1,50€</div></div>
         </div>
     </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🍔 Les Burgers</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Cheese Berbère</div><div class="plat-desc">Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, sauce Big Burger</div></div><div class="plat-prix">6,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Chicken Berbère</div><div class="plat-desc">Pain, poulet pané 135g, confit d'oignon, cheddar, salade, tomate, sauce Big Burger</div></div><div class="plat-prix">6,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Veggie Berbère</div><div class="plat-desc">Pain, falafel, confit d'oignon, cheddar, salade, tomate, sauce Big Burger ou Big Vegan</div></div><div class="plat-prix">6,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Raclette Berbère</div><div class="plat-desc">Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, fromage à raclette, poitrine de bœuf</div></div><div class="plat-prix">8,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Chèvre Miel</div><div class="plat-desc">Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, chèvre, miel, sauce cheezy</div></div><div class="plat-prix">8,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Roquefort</div><div class="plat-desc">Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, roquefort, sauce cheezy</div></div><div class="plat-prix">9,90€</div></div>
-            <div class="menu-plat nouveaute"><div class="plat-info"><div class="plat-nom">Double Cheese Burger <span class="badge-new">Nouveauté</span></div><div class="plat-desc">2 steaks 150g, sauce burger, salade, tomate, oignons, cheddar, pain brioché</div></div><div class="plat-prix">12,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Burger du Mois — Le Morbier</div><div class="plat-desc">Pain burger, steak 150g, rosties, oignons confits au miel, morbier, salade, tomate, sauce au choix</div></div><div class="plat-prix">11,90€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🥪 Les Sandwichs</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">L'Américain</div><div class="plat-desc">Pain ½ flûte, steak 150g, confit d'oignon, cheddar, salade, tomate, frites, sauce au choix</div></div><div class="plat-prix">8,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Le Mexicain</div><div class="plat-desc">Pain, poulet mariné aux épices 120g, confit d'oignon, cheddar, salade, tomate, frites, sauce au choix</div></div><div class="plat-prix">8,90€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🫓 Les Paninis</div>
-            <div class="menu-plat nouveaute"><div class="plat-info"><div class="plat-nom">Panini Kebab <span class="badge-new">Nouveauté</span></div><div class="plat-desc">Salade, tomate, oignons, viande kebab, sauce au choix</div></div><div class="plat-prix">5,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">3 Fromages</div><div class="plat-desc">Roquefort, chèvre, mozzarella</div></div><div class="plat-prix">5,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Poulet Curry</div></div><div class="plat-prix">5,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Mexicain</div><div class="plat-desc">Poulet mariné aux épices</div></div><div class="plat-prix">5,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Galette Kebab</div><div class="plat-desc">Galette, viande de veau et volaille, salade, tomate, oignons, sauce au choix</div></div><div class="plat-prix">6,90€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🥗 Les Salades</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Veggie</div><div class="plat-desc">Salade, falafel, tomates cerise, olive noir, œuf, oignons confit, vinaigrette ou sauce veggie</div></div><div class="plat-prix">6,90€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">César</div><div class="plat-desc">Salade, poulet pané, tomates cerise, olive noir, œuf, oignons confit, sauce césar</div></div><div class="plat-prix">7,50€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🍟 La Friture</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Petite Frite</div></div><div class="plat-prix">2,50€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Grande Frite</div></div><div class="plat-prix">4€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Tenders x2</div></div><div class="plat-prix">4,50€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Tenders x4</div></div><div class="plat-prix">8€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🎒 Menu Étudiant</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">1 Cheese, Chicken ou Veggie + 1 Petite Frite + 1 Boisson</div><div class="plat-desc">Sur présentation carte étudiant</div></div><div class="plat-prix">10€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">👶 Menu Enfant — Le Bambino</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Mini Cheese Berbère + Petite Frite + Capri-Sun + Compote + Jouet + Bonbon</div></div><div class="plat-prix">5,90€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">☀️ Petit Déjeuner</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Café/allongé/noisette + Pain ou croissant + Jus d'orange</div></div><div class="plat-prix">3€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Option chocolat ou thé</div><div class="plat-desc">En supplément</div></div><div class="plat-prix">+1€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🍽️ Menu du Jour</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Entrée + Plat + Dessert</div><div class="plat-desc">Change chaque jour · Réservation conseillée</div></div><div class="plat-prix">18€</div></div>
-        </div>
-
-        <div class="carte-categorie">
-            <div class="carte-cat-title">🥤 Les Boissons</div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Coca Cola, Sprite, Orangina, Fanta Orange, Perrier, Ice Tea, Oasis Tropical</div></div><div class="plat-prix">2€</div></div>
-            <div class="menu-plat"><div class="plat-info"><div class="plat-nom">Evian</div></div><div class="plat-prix">1,50€</div></div>
-        </div>
-
     </div><!-- fin berbereContent -->
     <!-- CLICK & COLLECT -->
     <div class="click-collect" id="click-collect">
