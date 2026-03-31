@@ -1,1099 +1,673 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Napoléon — Bar, Hôtel & Restaurant à Gap (05) | Hautes-Alpes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Napoléon — Bar, Hôtel & Restaurant à Gap (05)</title>
+<meta name="description" content="Le Napoléon, bar hôtel restaurant au cœur de Gap. Berbère King food truck. Chambres à louer au mois. 04 92 57 96 17.">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="FR-05">
+<link rel="canonical" href="https://www.hotel-napoleon-gap.fr/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","name":"Le Napoléon","address":{"@type":"PostalAddress","streetAddress":"19 Avenue Commandant Dumont","addressLocality":"Gap","postalCode":"05000","addressCountry":"FR"},"telephone":"+33492579617","openingHours":"Mo-Sa 06:30","url":"https://www.hotel-napoleon-gap.fr/"}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* === RESET === */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#0D0D0D;color:#F5F5F5;font-family:'Josefin Sans',sans-serif;font-weight:300;overflow-x:hidden}
+h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
+a{text-decoration:none;color:inherit}
 
-    <!-- SEO META -->
-    <meta name="description" content="Le Napoléon, bar hôtel restaurant au cœur de Gap (05000), à 5 min de la gare SNCF. Chambres à partir de 55€/nuit, cuisine locale des Hautes-Alpes, terrasse. Réservation directe — meilleur prix garanti.">
-    <meta name="keywords" content="bar Gap, hôtel Gap, restaurant Gap, bar hôtel restaurant Gap, hébergement Gap, Hautes-Alpes, 05000, Le Napoléon Gap, hotel pas cher Gap, restaurant local Gap">
-    <meta name="author" content="Le Napoléon — Gap">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="FR-05">
-    <meta name="geo.placename" content="Gap, Hautes-Alpes">
-    <meta name="geo.position" content="44.5587;6.0835">
-    <meta name="ICBM" content="44.5587, 6.0835">
-    <link rel="canonical" href="https://www.hotel-napoleon-gap.fr/">
+/* === VARIABLES === */
+:root{--gold:#FFD700;--gold-dim:rgba(255,215,0,0.15);--gold-border:rgba(255,215,0,0.2);--dark:#0D0D0D;--dark2:#111111;--dark3:#1A1A1A;--text:rgba(245,245,245,0.65);--text-bright:#F5F5F5}
 
-    <!-- OPEN GRAPH (réseaux sociaux) -->
-    <meta property="og:type" content="business.business">
-    <meta property="og:title" content="Le Napoléon — Bar, Hôtel & Restaurant à Gap">
-    <meta property="og:description" content="Bar hôtel restaurant au cœur de Gap, à 5 min de la gare SNCF. Chambres à partir de 55€/nuit, cuisine locale des Hautes-Alpes. Réservation directe.">
-    <meta property="og:url" content="https://www.hotel-napoleon-gap.fr/">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="business:contact_data:street_address" content="19 Avenue Commandant Dumont">
-    <meta property="business:contact_data:locality" content="Gap">
-    <meta property="business:contact_data:postal_code" content="05000">
-    <meta property="business:contact_data:country_name" content="France">
+/* === NAVBAR === */
+#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:center;padding:8px 20px;background:rgba(13,13,13,0.96);border-bottom:1px solid var(--gold-border)}
+.nav-logo{position:absolute;left:50%;transform:translateX(-50%);cursor:pointer;z-index:1003;top:10px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.menu-label{font-size:9px;letter-spacing:3px;color:rgba(255,215,0,0.6);text-transform:uppercase}
+@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(255,215,0,0.3)}50%{box-shadow:0 0 18px rgba(255,215,0,0.7)}}
+.logo-circle{animation:pulse 2.5s ease-in-out infinite;width:60px;height:60px;border-radius:50%;background-image:url('napoleon-logo.jpg');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:2px solid rgba(255,215,0,0.4)}
+.logo-circle::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);border-radius:50%}
+.logo-letter{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--gold);position:relative;z-index:2;text-shadow:1px 1px 4px rgba(0,0,0,0.8)}
+.nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(13,13,13,0.98);justify-content:center;align-items:center;gap:40px;list-style:none;z-index:1002}
+.nav-links.open{display:flex}
+.nav-links a{font-size:18px;letter-spacing:4px;text-transform:uppercase;color:#F5F5F5;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.sous-menu,.sous-menu-resto{display:none;flex-direction:column;align-items:center;gap:16px;margin-top:16px;padding:16px 0;border-top:1px solid rgba(255,215,0,0.2);border-bottom:1px solid rgba(255,215,0,0.2);width:100%}
+.sous-menu.open,.sous-menu-resto.open{display:flex}
+.sous-menu a,.sous-menu-resto a{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,245,245,0.6);transition:color 0.3s;padding:4px 0}
+.sous-menu a:hover,.sous-menu-resto a:hover{color:var(--gold)}
 
-    <!-- SCHEMA.ORG JSON-LD (Google) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LodgingBusiness",
-      "name": "Le Napoléon",
-      "description": "Bar, hôtel et restaurant au cœur de Gap, à 5 minutes de la gare SNCF des Hautes-Alpes.",
-      "url": "https://www.hotel-napoleon-gap.fr/",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "19 Avenue Commandant Dumont",
-        "addressLocality": "Gap",
-        "postalCode": "05000",
-        "addressRegion": "Hautes-Alpes",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 44.5587,
-        "longitude": 6.0835
-      },
-      "openingHours": "Mo-Su 07:00-23:00",
-      "priceRange": "€€",
-      "servesCuisine": "Cuisine locale, Hautes-Alpes",
-      "hasMap": "https://maps.google.com/?q=19+Avenue+Commandant+Dumont+Gap",
-      "amenityFeature": [
-        {"@type": "LocationFeatureSpecification", "name": "Bar", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Terrasse", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Parking à proximité", "value": true}
-      ],
-      "sameAs": []
-    }
-    </script>
+/* === SECTIONS BASE === */
+section{padding:100px 40px;min-height:100vh;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){section{padding:80px 20px}#navbar{padding:8px 16px}}
+.section-container{max-width:1100px;width:100%;margin:0 auto}
+.section-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:6px;color:var(--gold);margin-bottom:12px;text-transform:uppercase}
+.section-container h2{font-size:48px;color:#F5F5F5;margin-bottom:8px}
+.section-sub{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,245,245,0.4);margin-bottom:50px}
+@media(max-width:768px){.section-container h2{font-size:32px}}
+.info-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,215,0,0.15)}
+.info-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.info-value{font-size:13px;color:var(--text)}
+.bloc-title{font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;padding-bottom:12px;border-bottom:1px solid rgba(255,215,0,0.2)}
+.btn-primary{padding:14px 36px;background:var(--gold);color:#0D0D0D;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;transition:all 0.3s;display:inline-block;cursor:pointer;border:none}
+.btn-primary:hover{background:#F5F5F5}
+.btn-secondary{padding:14px 36px;border:1px solid rgba(245,245,245,0.4);color:#F5F5F5;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;transition:all 0.3s;display:inline-block}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+/* === HERO === */
+#hero{position:relative;min-height:100vh;background-image:url('https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;padding:0 20px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.7) 100%)}
+.hero-content{position:relative;z-index:2;max-width:700px;text-align:center;margin:0 auto;width:100%}
+.hero-title-box{background:rgba(0,0,0,0.75);padding:20px 40px;margin-bottom:16px;display:inline-block}
+.hero-title-box h1{font-size:64px;color:#F5F5F5;margin:0;letter-spacing:4px}
+@media(max-width:768px){.hero-title-box h1{font-size:38px}.hero-title-box{padding:14px 24px}}
+.hero-tagline{font-family:'Cinzel',serif;font-size:13px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.5);padding:10px 30px;display:inline-block;margin-bottom:16px}
+.hero-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,245,245,0.55);margin-bottom:36px;display:block}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
-    <style>
-/* ===== RESET & BASE ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background-color: #0D0D0D; color: #F5F5F5; font-family: 'Josefin Sans', sans-serif; font-weight: 300; }
-h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 700; }
-a { text-decoration: none; color: inherit; }
+/* === BAR === */
+#bar{background:var(--dark);min-height:auto;padding:100px 40px}
+.bar-ambiance{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px}
+@media(max-width:768px){.bar-ambiance{grid-template-columns:1fr;gap:40px}}
+.bar-text p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:40px}
+.bar-image img{width:100%;height:400px;object-fit:cover}
+.bar-infos{display:flex;flex-direction:column;gap:16px}
+.btn-toggle{background:transparent;border:1px solid rgba(255,215,0,0.5);color:var(--gold);font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;padding:16px 48px;cursor:pointer;display:inline-flex;align-items:center;gap:12px;transition:all 0.3s}
+.btn-toggle:hover{background:rgba(255,215,0,0.08)}
+.bar-discover-btn{text-align:center;margin:40px 0}
+.bar-extra{max-height:0;overflow:hidden;transition:max-height 0.8s ease,opacity 0.5s ease;opacity:0}
+.bar-extra.open{max-height:2000px;opacity:1}
+.bar-boissons{margin-bottom:80px}
+.boissons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.boissons-grid,.events-grid{grid-template-columns:1fr}}
+.boisson-card{background:var(--dark3);border:1px solid var(--gold-border);padding:32px 24px;text-align:center;transition:border-color 0.3s}
+.boisson-card:hover{border-color:rgba(255,215,0,0.4)}
+.boisson-icon{font-size:40px;display:block;margin-bottom:16px}
+.boisson-card h4{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#F5F5F5;margin-bottom:10px}
+.boisson-card p{font-size:12px;color:rgba(245,245,245,0.4);line-height:1.6}
+.bar-events{margin-bottom:20px}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.event-card{background:var(--dark3);border:1px solid var(--gold-border);padding:28px 24px;position:relative;transition:border-color 0.3s}
+.event-card:hover{border-color:rgba(255,215,0,0.4)}
+.event-priv{border-color:rgba(255,215,0,0.25)}
+.event-date{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px}
+.event-card h4{font-size:14px;letter-spacing:1px;color:#F5F5F5;margin-bottom:10px;text-transform:uppercase}
+.event-card p{font-size:12px;color:rgba(245,245,245,0.4);line-height:1.6;margin-bottom:16px}
+.event-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(255,215,0,0.3);color:var(--gold)}
 
-/* ===== NAVBAR ===== */
-#navbar {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-    display: flex; align-items: center; justify-content: center;
-    padding: 8px 40px;
-    background-color: rgba(13, 13, 13, 0.95);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-}
-.nav-logo {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    cursor: pointer; z-index: 1003; top: 10px;
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-}
-.menu-label {
-    font-family: 'Josefin Sans', sans-serif; font-size: 9px;
-    letter-spacing: 3px; color: rgba(255, 215, 0, 0.6); text-transform: uppercase;
-}
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
-    50% { box-shadow: 0 0 18px rgba(255, 215, 0, 0.7); }
-}
-.logo-circle {
-    animation: pulse 2.5s ease-in-out infinite;
-    width: 60px; height: 60px; border-radius: 50%;
-    background-image: url('napoleon-logo.jpg');
-    background-color: transparent; background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-    border: 2px solid rgba(255, 215, 0, 0.4);
-}
-.logo-circle::before {
-    content: ''; position: absolute; inset: 0;
-    background: rgba(0, 0, 0, 0.45); border-radius: 50%;
-}
-.logo-letter {
-    font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700;
-    color: #FFD700; position: relative; z-index: 2;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-}
+/* === RESTAURATION === */
+#restauration{position:relative;overflow:hidden;background:var(--dark2);min-height:100vh;padding:100px 40px;display:flex;align-items:flex-start;justify-content:center}
+.couverts-overlay{position:absolute;top:0;left:0;right:0;height:100vh;display:flex;align-items:center;justify-content:center;gap:40px;z-index:10;pointer-events:none}
+.couvert-gauche{width:50px;height:260px;transform:translateX(0);transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
+.couvert-droite{width:50px;height:260px;transform:translateX(0);transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
+.couvert-gauche svg,.couvert-droite svg{width:100%;height:100%}
+#restauration.animate .couvert-gauche{transform:translateX(-55vw)}
+#restauration.animate .couvert-droite{transform:translateX(55vw)}
+.resto-content{position:relative;z-index:5;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease 0.6s,transform 0.5s ease 0.6s;width:100%}
+#restauration.animate .resto-content{opacity:1;transform:translateY(0)}
+.resto-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:60px}
+@media(max-width:768px){.resto-grid{grid-template-columns:1fr;gap:40px}.resto-image{display:none}}
+.resto-image img{width:100%;height:450px;object-fit:cover}
+.resto-text p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:24px}
+.buffet-card{background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.35);padding:28px;position:relative}
+.badge-soon{display:inline-block;background:var(--gold);color:#0D0D0D;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;margin-bottom:14px}
+.buffet-card h3{font-size:16px;letter-spacing:2px;color:#F5F5F5;margin-bottom:8px;text-transform:uppercase}
+.buffet-card p{font-size:13px;line-height:1.6;color:rgba(245,245,245,0.5)}
 
-/* Sous-menus */
-.sous-menu, .sous-menu-resto {
-    display: none; flex-direction: column; align-items: center;
-    gap: 16px; margin-top: 16px; padding: 16px 0;
-    border-top: 1px solid rgba(255, 215, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2); width: 100%;
-}
-.sous-menu.open, .sous-menu-resto.open { display: flex; }
-.sous-menu a, .sous-menu-resto a {
-    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(245, 245, 245, 0.6); transition: color 0.3s ease; padding: 4px 0;
-}
-.sous-menu a:hover, .sous-menu-resto a:hover { color: #FFD700; }
+/* BERBERE BOX */
+.berbere-section{margin-top:60px}
+.berbere-box{display:grid;grid-template-columns:1fr 1.4fr;gap:0;border:1px solid rgba(255,215,0,0.25);overflow:hidden}
+@media(max-width:768px){.berbere-box{grid-template-columns:1fr}}
+.berbere-visual{background:linear-gradient(135deg,#1a1400,#0d0d0d);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;border-right:1px solid rgba(255,215,0,0.15)}
+@media(max-width:768px){.berbere-visual{border-right:none;border-bottom:1px solid rgba(255,215,0,0.15)}}
+.berbere-emoji{font-size:64px;margin-bottom:16px;display:block}
+.berbere-name{font-family:'Cinzel',serif;font-size:22px;color:var(--gold);letter-spacing:4px;margin-bottom:4px}
+.berbere-type{font-size:10px;letter-spacing:4px;color:rgba(255,215,0,0.5);text-transform:uppercase;margin-bottom:16px}
+.berbere-addr{font-size:12px;color:rgba(245,245,245,0.4);margin-bottom:6px}
+.berbere-tel{font-size:15px;color:var(--gold);font-weight:600;letter-spacing:1px}
+.berbere-info{padding:40px}
+.berbere-info p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:28px}
+.btn-menu{display:inline-block;background:transparent;border:1px solid rgba(255,215,0,0.5);color:var(--gold);font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:16px 32px;cursor:pointer;transition:all 0.3s}
+.btn-menu:hover{background:rgba(255,215,0,0.1)}
 
-.nav-links {
-    display: none; flex-direction: column; position: fixed;
-    top: 0; left: 0; width: 100%; height: 100vh;
-    background-color: rgba(13, 13, 13, 0.98);
-    justify-content: center; align-items: center; gap: 40px;
-    list-style: none; z-index: 1002;
-}
-.nav-links.open { display: flex; }
-.nav-links a {
-    font-size: 18px; font-weight: 400; letter-spacing: 4px;
-    text-transform: uppercase; color: #F5F5F5; transition: color 0.3s ease;
-}
-.nav-links a:hover { color: #FFD700; }
+/* PRIVATISATION */
+#privatisation{background:var(--dark);min-height:auto;padding:100px 40px}
+.priv-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.priv-grid{grid-template-columns:1fr}}
+.priv-text p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:32px}
+.priv-number{font-family:'Cinzel',serif;font-size:120px;color:transparent;-webkit-text-stroke:2px rgba(255,215,0,0.3);line-height:1;text-align:center}
+.priv-number-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,215,0,0.5);text-align:center;margin-bottom:20px}
+.priv-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.priv-tag{background:rgba(255,215,0,0.05);border:1px solid var(--gold-border);color:rgba(245,245,245,0.6);padding:8px 14px;font-size:12px;letter-spacing:1px}
+@media(max-width:768px){.priv-number{font-size:80px}}
 
-/* ===== HERO ===== */
-#hero {
-    position: relative; min-height: 100vh;
-    background-image: url('https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg');
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; padding: 0 40px;
-}
-.hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
-}
-.hero-content {
-    position: relative; z-index: 2; max-width: 700px;
-    text-align: center; margin: 0 auto;
-}
-.hero-title-box {
-    background-color: rgba(0, 0, 0, 0.75); padding: 20px 40px;
-    margin-bottom: 16px; display: inline-block;
-}
-.hero-title-box h1 { font-size: 64px; color: #F5F5F5; margin: 0; letter-spacing: 4px; }
-.hero-tagline {
-    font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 6px;
-    text-transform: uppercase; color: #FFD700;
-    background-color: rgba(255, 215, 0, 0.08);
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    padding: 10px 30px; display: inline-block; margin-bottom: 16px;
-}
-.hero-eyebrow {
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(245, 245, 245, 0.55); margin-bottom: 36px; display: block;
-}
-.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-    padding: 14px 36px; background-color: #FFD700; color: #0D0D0D;
-    font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; display: inline-block;
-}
-.btn-primary:hover { background-color: #F5F5F5; }
-.btn-secondary {
-    padding: 14px 36px; border: 1px solid rgba(245, 245, 245, 0.4); color: #F5F5F5;
-    font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; display: inline-block;
-}
-.btn-secondary:hover { border-color: #FFD700; color: #FFD700; }
+/* === HOTEL === */
+#hotel{background:var(--dark);min-height:auto;padding:100px 40px;position:relative;overflow:hidden}
+#hotel::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 15% 20%,rgba(20,25,60,0.5) 0%,transparent 55%),radial-gradient(ellipse at 85% 80%,rgba(10,15,40,0.4) 0%,transparent 50%)}
+#hotel .section-container{position:relative;z-index:1}
+.hotel-stars-bg{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.hotel-stars-bg::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 22% 6%,rgba(255,255,255,0.35) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 38% 18%,rgba(255,255,255,0.55) 0%,transparent 100%),radial-gradient(1px 1px at 55% 4%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 70% 14%,rgba(255,255,255,0.45) 0%,transparent 100%),radial-gradient(1px 1px at 82% 8%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 92% 20%,rgba(255,255,255,0.5) 0%,transparent 100%);animation:starsTwinkle 5s ease-in-out infinite alternate}
+@keyframes starsTwinkle{0%{opacity:0.6}100%{opacity:1}}
+.hotel-cloud{position:absolute;border-radius:50px;pointer-events:none;background:linear-gradient(to bottom,rgba(180,190,210,0.08),rgba(150,160,185,0.04));animation:cloudDrift linear infinite;z-index:0}
+.hotel-cloud::before,.hotel-cloud::after{content:'';position:absolute;background:inherit;border-radius:50%}
+.hotel-cloud-1{width:180px;height:45px;top:10%;left:-200px;animation-duration:35s}
+.hotel-cloud-1::before{width:80px;height:65px;top:-28px;left:25px}
+.hotel-cloud-1::after{width:60px;height:50px;top:-18px;left:85px}
+.hotel-cloud-2{width:140px;height:38px;top:35%;left:-160px;animation-duration:50s;animation-delay:-18s}
+.hotel-cloud-2::before{width:60px;height:52px;top:-22px;left:18px}
+.hotel-cloud-2::after{width:48px;height:42px;top:-14px;left:65px}
+.hotel-cloud-3{width:210px;height:52px;top:62%;left:-240px;animation-duration:42s;animation-delay:-9s}
+.hotel-cloud-3::before{width:95px;height:78px;top:-36px;left:38px}
+.hotel-cloud-3::after{width:72px;height:62px;top:-26px;left:115px}
+@keyframes cloudDrift{from{left:-260px}to{left:calc(100% + 260px)}}
+.lune-container{position:absolute;top:30px;right:60px;z-index:2;animation:luneFlottement 7s ease-in-out infinite}
+@keyframes luneFlottement{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.lune-bonnet{text-align:center;margin-bottom:-6px}
+.bonnet-corps{width:72px;height:48px;margin:0 auto;background:linear-gradient(160deg,#c0392b 0%,#e74c3c 100%);border-radius:50% 50% 0 0/80% 80% 0 0;position:relative}
+.bonnet-pompon{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,#fff 40%,#ddd 100%);position:absolute;top:-10px;left:50%;transform:translateX(-50%);box-shadow:0 2px 6px rgba(0,0,0,0.35)}
+.bonnet-bord{width:88px;height:13px;margin:0 auto;background:repeating-linear-gradient(90deg,#c0392b 0px,#c0392b 7px,#e8b4b8 7px,#e8b4b8 14px);border-radius:3px}
+.lune-visage{width:82px;height:82px;border-radius:50%;margin:0 auto;background:radial-gradient(circle at 35% 30%,#fef3c7 0%,#f5d77a 55%,#d4aa30 100%);box-shadow:0 0 30px rgba(254,243,199,0.35);position:relative}
+.lune-yeux{position:absolute;top:35px;left:50%;transform:translateX(-50%);display:flex;gap:14px}
+.lune-oeil{width:5px;height:2.5px;background:#7a5a10;border-radius:50%}
+.lune-joue{position:absolute;width:9px;height:5px;background:rgba(255,140,80,0.38);border-radius:50%;top:44px}
+.lune-joue.gauche{left:12px}.lune-joue.droite{right:12px}
+.lune-sourire{position:absolute;top:50px;left:50%;transform:translateX(-50%);width:18px;height:7px;border-bottom:2.5px solid #7a5a10;border-radius:50%}
+@media(max-width:768px){.lune-container{right:10px;top:60px}}
+.hotel-accroche{text-align:center;margin-bottom:60px;padding:30px;border-left:3px solid var(--gold);border-right:3px solid var(--gold)}
+.hotel-accroche p{font-family:'Cinzel',serif;font-size:18px;color:rgba(245,245,245,0.8);font-style:italic;line-height:1.6}
+.hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:40px}
+@media(max-width:768px){.hotel-grid{grid-template-columns:1fr}}
+.hotel-image img{width:100%;height:450px;object-fit:cover}
+.hotel-text p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:32px}
+.hotel-avantages{display:flex;flex-direction:column;gap:20px}
+.avantage-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,215,0,0.1)}
+.avantage-icon{font-size:22px;min-width:32px}
+.avantage-title{display:block;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.avantage-desc{display:block;font-size:12px;color:rgba(245,245,245,0.5);line-height:1.5}
 
-/* ===== SECTIONS BASE ===== */
-section { padding: 100px 40px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-@media (max-width: 768px) {
-    #navbar { padding: 12px 20px; }
-    .hero-title-box h1 { font-size: 38px; }
-    .hero-title-box { padding: 14px 24px; }
-    section { padding: 80px 20px; }
-}
+/* === HISTOIRE === */
+#histoire{background:var(--dark2);min-height:auto;padding:100px 40px}
+.histoire-inner{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:start}
+@media(max-width:768px){.histoire-inner{grid-template-columns:1fr;gap:30px}}
+.histoire-annee{font-family:'Cinzel',serif;font-size:clamp(70px,9vw,110px);color:transparent;-webkit-text-stroke:1px rgba(255,215,0,0.18);line-height:1;white-space:nowrap}
+.histoire-text p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:22px}
+.histoire-text p:first-child{font-size:18px;color:rgba(245,245,245,0.85);font-style:italic}
+.histoire-frise{display:flex;margin-top:50px;border-top:1px solid rgba(255,215,0,0.1);overflow:hidden}
+.frise-item{flex:1;padding:18px 14px;border-right:1px solid rgba(255,215,0,0.06)}
+.frise-item:last-child{border-right:none}
+.frise-date{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:1px;display:block;margin-bottom:6px}
+.frise-texte{font-size:11px;color:rgba(245,245,245,0.45);line-height:1.5}
 
-/* ===== SECTIONS COMMUNES ===== */
-.section-container { max-width: 1100px; width: 100%; margin: 0 auto; }
-.section-label {
-    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 6px;
-    color: #FFD700; margin-bottom: 12px; text-transform: uppercase;
-}
-.section-container h2 { font-size: 48px; color: #F5F5F5; margin-bottom: 8px; }
-.section-sub {
-    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(245,245,245,0.4); margin-bottom: 50px;
-}
+/* === A PROPOS === */
+#apropos{background:var(--dark);min-height:auto;padding:100px 40px}
+.apropos-texte{max-width:700px}
+.apropos-texte p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px}
+.apropos-texte p:first-child{font-size:20px;font-family:'Cinzel',serif;font-style:italic;color:rgba(245,245,245,0.85)}
 
-/* ===== BAR ===== */
-#bar { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; }
-.bar-ambiance {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-    align-items: center; margin-bottom: 80px;
-}
-.bar-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 40px; }
-.bar-image img { width: 100%; height: 400px; object-fit: cover; }
-.bar-infos { display: flex; flex-direction: column; gap: 16px; }
-.info-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 0; border-bottom: 1px solid rgba(255,215,0,0.15);
-}
-.info-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; }
-.info-value { font-size: 13px; color: rgba(245,245,245,0.7); }
-.bloc-title {
-    font-size: 22px; letter-spacing: 3px; text-transform: uppercase;
-    color: #FFD700; margin-bottom: 32px; padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,215,0,0.2);
-}
-.bar-boissons { margin-bottom: 80px; }
-.boissons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.boisson-card {
-    background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1);
-    padding: 32px 24px; text-align: center; transition: border-color 0.3s ease;
-}
-.boisson-card:hover { border-color: rgba(255,215,0,0.4); }
-.boisson-icon { font-size: 40px; display: block; margin-bottom: 16px; }
-.boisson-card h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #F5F5F5; margin-bottom: 10px; }
-.boisson-card p { font-size: 12px; color: rgba(245,245,245,0.4); line-height: 1.6; }
-.bar-events { margin-bottom: 20px; }
-.events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.event-card {
-    background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1);
-    padding: 28px 24px; position: relative; transition: border-color 0.3s ease;
-}
-.event-card:hover { border-color: rgba(255,215,0,0.4); }
-.event-priv { border-color: rgba(255,215,0,0.25); }
-.event-date { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; display: block; margin-bottom: 12px; }
-.event-card h4 { font-size: 14px; letter-spacing: 1px; color: #F5F5F5; margin-bottom: 10px; text-transform: uppercase; }
-.event-card p { font-size: 12px; color: rgba(245,245,245,0.4); line-height: 1.6; margin-bottom: 16px; }
-.event-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,215,0,0.3); color: #FFD700; }
-.bar-discover-btn { text-align: center; margin: 40px 0; }
-.btn-toggle-bar {
-    background: transparent; border: 1px solid rgba(255,215,0,0.5); color: #FFD700;
-    font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 4px;
-    text-transform: uppercase; padding: 16px 48px; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s ease;
-}
-.btn-toggle-bar:hover { background: rgba(255,215,0,0.08); }
-.btn-arrow { transition: transform 0.3s ease; display: inline-block; }
-.btn-toggle-bar.open .btn-arrow { transform: rotate(180deg); }
-.bar-extra { max-height: 0; overflow: hidden; transition: max-height 0.8s ease, opacity 0.5s ease; opacity: 0; }
-.bar-extra.open { max-height: 2000px; opacity: 1; }
-@media (max-width: 768px) {
-    .bar-ambiance { grid-template-columns: 1fr; gap: 40px; }
-    .boissons-grid, .events-grid { grid-template-columns: 1fr; }
-    .section-container h2 { font-size: 32px; }
-}
+/* === AVIS === */
+#avis{background:var(--dark2);min-height:auto;padding:80px 40px}
+.avis-grid{display:grid;grid-template-columns:1fr 1fr 0.6fr;gap:24px;align-items:center}
+@media(max-width:768px){.avis-grid{grid-template-columns:1fr}}
+.avis-card{background:var(--dark3);border:1px solid var(--gold-border);padding:28px 24px}
+.avis-stars{color:var(--gold);font-size:16px;margin-bottom:12px;letter-spacing:2px}
+.avis-card p{font-size:13px;color:rgba(245,245,245,0.6);line-height:1.7;font-style:italic;margin-bottom:12px}
+.avis-author{font-size:11px;letter-spacing:2px;color:var(--gold)}
+.avis-note{text-align:center;padding:40px 24px}
+.avis-score{font-family:'Cinzel',serif;font-size:64px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:8px}
+.avis-source{font-size:11px;letter-spacing:2px;color:rgba(245,245,245,0.4);text-transform:uppercase;display:block;margin-top:8px}
 
-/* Accordéon menu */
-.menu-toggle-btn {
-    width: 100%; background: #1A1A1A; border: 1px solid rgba(255,215,0,0.15);
-    color: #F5F5F5; font-family: 'Josefin Sans', sans-serif; font-size: 13px;
-    letter-spacing: 2px; text-transform: uppercase; padding: 18px 24px;
-    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-    margin-top: 8px; transition: background 0.2s, border-color 0.2s;
-}
-.menu-toggle-btn:hover, .menu-toggle-btn.open { background: rgba(255,215,0,0.06); border-color: rgba(255,215,0,0.3); }
-.menu-toggle-btn.open .menu-toggle-arrow { transform: rotate(180deg); }
-.menu-toggle-arrow { transition: transform 0.3s ease; display: inline-block; color: #FFD700; }
-.menu-accordion { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-.menu-accordion.open { max-height: 2000px; }
-.menu-accordion .menu-body { padding: 0 4px 4px; }
+/* === CONTACT === */
+#contact{background:var(--dark2);min-height:auto;padding:100px 40px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+.contact-infos{display:flex;flex-direction:column;gap:0}
+.contact-item{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,215,0,0.1)}
+.contact-icon{font-size:22px;min-width:32px}
+.contact-title{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.contact-value{display:block;font-size:13px;color:rgba(245,245,245,0.6);line-height:1.6}
+.contact-map iframe{width:100%;height:450px;filter:grayscale(30%) brightness(0.85)}
 
-.carte-categorie {
-    padding: 20px 16px 8px;
-    border-bottom: 1px solid rgba(255, 120, 20, 0.1);
-    margin-bottom: 4px;
-}
-.carte-categorie:last-child { border-bottom: none; }
-.carte-cat-title {
-    font-family: 'Cinzel', serif;
-    font-size: 13px; letter-spacing: 2px;
-    color: #FF7814; margin-bottom: 16px;
-    text-transform: uppercase;
-}
-.badge-new {
-    background: rgba(255,120,20,0.15);
-    color: #FF7814; font-size: 10px;
-    padding: 2px 8px; border-radius: 20px;
-    border: 1px solid rgba(255,120,20,0.3);
-    letter-spacing: 1px; margin-left: 8px;
-    vertical-align: middle;
-}
+/* === FOOTER === */
+footer{background:#0A0A0A;padding:30px 40px;text-align:center;border-top:1px solid rgba(255,215,0,0.1)}
+footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,245,0.3)}
 
-/* ===== RESTAURATION ===== */
-#restauration {
-    position: relative; overflow: visible;
-    background-color: #111111; min-height: 100vh; padding: 100px 40px;
-}
-.couverts-overlay {
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 100vh; display: flex; align-items: center;
-    justify-content: center; gap: 40px; z-index: 10;
-    pointer-events: none;
-}
-.couvert-gauche { width: 50px; height: 260px; transform: translateX(0); transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
-.couvert-droite { width: 50px; height: 260px; transform: translateX(0); transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
-.couvert-gauche svg, .couvert-droite svg { width: 100%; height: 100%; }
-#restauration.animate .couvert-gauche { transform: translateX(-55vw); }
-#restauration.animate .couvert-droite { transform: translateX(55vw); }
-.resto-content {
-    position: relative; z-index: 5; opacity: 0; transform: translateY(20px);
-    transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s;
-}
-#restauration.animate .resto-content { opacity: 1; transform: translateY(0); }
-.resto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.resto-image img { width: 100%; height: 450px; object-fit: cover; }
-.resto-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 40px; }
-.resto-cards { display: flex; flex-direction: column; gap: 20px; }
-.resto-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1); padding: 24px; position: relative; }
-.resto-card-soon { border-color: rgba(255,215,0,0.3); }
-.resto-card-icon { font-size: 24px; display: block; margin-bottom: 12px; }
-.resto-card h3 { font-size: 16px; letter-spacing: 2px; color: #F5F5F5; margin-bottom: 8px; text-transform: uppercase; }
-.resto-card p { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.5); margin-bottom: 0; }
-.badge-soon {
-    position: absolute; top: 16px; right: 16px; background-color: #FFD700;
-    color: #0D0D0D; font-size: 9px; font-weight: 600; letter-spacing: 2px;
-    text-transform: uppercase; padding: 4px 10px;
-}
-@media (max-width: 768px) { .resto-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-/* ===== MENUS DEMO ===== */
-.resto-menus { margin-top: 70px; }
-.menus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-.menu-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.12); }
-.menu-header {
-    display: flex; align-items: center; gap: 14px; padding: 22px 28px;
-    border-bottom: 1px solid rgba(255,215,0,0.1);
-    background: linear-gradient(to right, rgba(255,215,0,0.06), transparent);
-}
-.menu-header-icon { font-size: 26px; }
-.menu-header h3 { font-size: 15px; letter-spacing: 2px; text-transform: uppercase; color: #F5F5F5; margin-bottom: 3px; }
-.menu-header p { font-size: 10px; letter-spacing: 2px; color: rgba(255,215,0,0.6); text-transform: uppercase; }
-.menu-body { padding: 24px 28px; }
-.menu-plat {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.menu-plat:last-of-type { border-bottom: none; }
-.plat-info { flex: 1; padding-right: 16px; }
-.plat-nom { font-size: 13px; color: #F5F5F5; margin-bottom: 3px; }
-.plat-desc { font-size: 11px; color: rgba(245,245,245,0.4); font-style: italic; }
-.plat-prix { font-family: 'Cinzel', serif; font-size: 14px; color: #FFD700; white-space: nowrap; }
-.menu-formule {
-    margin-top: 18px; padding: 14px 18px;
-    background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.15); text-align: center;
-}
-.menu-formule-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 6px; }
-.menu-formule-prix { font-family: 'Cinzel', serif; font-size: 22px; color: #FFD700; }
-.menu-formule-detail { font-size: 11px; letter-spacing: 1px; color: rgba(245,245,245,0.4); margin-top: 4px; }
-@media (max-width: 768px) { .menus-grid { grid-template-columns: 1fr; } }
-
-/* Privatisation */
-.click-collect { margin-top: 70px; }
-.cc-box { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.12); padding: 40px; }
-.cc-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 28px; }
-.cc-infos { display: flex; flex-direction: column; gap: 0; }
-.cc-icon { font-size: 80px; opacity: 0.4; }
-@media (max-width: 768px) { .cc-box { grid-template-columns: 1fr; } .cc-icon { display: none; } }
-
-/* ===== HOTEL ===== */
-#hotel { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; position: relative; overflow: hidden; }
-
-/* Fond nuit pour la section hôtel uniquement */
-#hotel::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background:
-        radial-gradient(ellipse at 15% 20%, rgba(20,25,60,0.5) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 80%, rgba(10,15,40,0.4) 0%, transparent 50%);
-}
-#hotel .section-container { position: relative; z-index: 1; }
-
-/* Étoiles légères */
-.hotel-stars-bg {
-    position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-}
-.hotel-stars-bg::before {
-    content: ''; position: absolute; inset: 0;
-    background-image:
-        radial-gradient(1px 1px at 8% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 22% 6%, rgba(255,255,255,0.35) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 38% 18%, rgba(255,255,255,0.55) 0%, transparent 100%),
-        radial-gradient(1px 1px at 55% 4%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 70% 14%, rgba(255,255,255,0.45) 0%, transparent 100%),
-        radial-gradient(1px 1px at 82% 8%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 92% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 14% 32%, rgba(255,255,255,0.25) 0%, transparent 100%),
-        radial-gradient(1px 1px at 47% 25%, rgba(255,255,255,0.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 66% 28%, rgba(255,255,255,0.3) 0%, transparent 100%);
-    animation: starsTwinkle 5s ease-in-out infinite alternate;
-}
-@keyframes starsTwinkle { 0%{opacity:0.6} 100%{opacity:1} }
-
-/* Nuages */
-.hotel-cloud {
-    position: absolute; border-radius: 50px; pointer-events: none;
-    background: linear-gradient(to bottom, rgba(180,190,210,0.08), rgba(150,160,185,0.04));
-    animation: cloudDrift linear infinite; z-index: 0;
-}
-.hotel-cloud::before, .hotel-cloud::after {
-    content: ''; position: absolute; background: inherit; border-radius: 50%;
-}
-.hotel-cloud-1 { width: 180px; height: 45px; top: 10%; left: -200px; animation-duration: 35s; }
-.hotel-cloud-1::before { width: 80px; height: 65px; top: -28px; left: 25px; }
-.hotel-cloud-1::after { width: 60px; height: 50px; top: -18px; left: 85px; }
-.hotel-cloud-2 { width: 140px; height: 38px; top: 35%; left: -160px; animation-duration: 50s; animation-delay: -18s; }
-.hotel-cloud-2::before { width: 60px; height: 52px; top: -22px; left: 18px; }
-.hotel-cloud-2::after { width: 48px; height: 42px; top: -14px; left: 65px; }
-.hotel-cloud-3 { width: 210px; height: 52px; top: 62%; left: -240px; animation-duration: 42s; animation-delay: -9s; }
-.hotel-cloud-3::before { width: 95px; height: 78px; top: -36px; left: 38px; }
-.hotel-cloud-3::after { width: 72px; height: 62px; top: -26px; left: 115px; }
-@keyframes cloudDrift { from{left:-260px} to{left:calc(100% + 260px)} }
-
-/* Lune + bonnet */
-.lune-container {
-    position: absolute; top: 30px; right: 60px; z-index: 2;
-    animation: luneFlottement 7s ease-in-out infinite;
-}
-@keyframes luneFlottement { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-.lune-bonnet { text-align: center; margin-bottom: -6px; position: relative; }
-.bonnet-corps {
-    width: 72px; height: 48px; margin: 0 auto;
-    background: linear-gradient(160deg, #c0392b 0%, #e74c3c 100%);
-    border-radius: 50% 50% 0 0 / 80% 80% 0 0;
-    position: relative;
-}
-.bonnet-pompon {
-    width: 18px; height: 18px; border-radius: 50%;
-    background: radial-gradient(circle, #fff 40%, #ddd 100%);
-    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-}
-.bonnet-bord {
-    width: 88px; height: 13px; margin: 0 auto;
-    background: repeating-linear-gradient(90deg, #c0392b 0px, #c0392b 7px, #e8b4b8 7px, #e8b4b8 14px);
-    border-radius: 3px;
-}
-.lune-visage {
-    width: 82px; height: 82px; border-radius: 50%; margin: 0 auto;
-    background: radial-gradient(circle at 35% 30%, #fef3c7 0%, #f5d77a 55%, #d4aa30 100%);
-    box-shadow: 0 0 30px rgba(254,243,199,0.35), 0 0 70px rgba(254,243,199,0.12);
-    position: relative;
-}
-.lune-yeux { position: absolute; top: 35px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px; }
-.lune-oeil { width: 5px; height: 2.5px; background: #7a5a10; border-radius: 50%; }
-.lune-joue { position: absolute; width: 9px; height: 5px; background: rgba(255,140,80,0.38); border-radius: 50%; top: 44px; }
-.lune-joue.gauche { left: 12px; }
-.lune-joue.droite { right: 12px; }
-.lune-sourire {
-    position: absolute; top: 50px; left: 50%; transform: translateX(-50%);
-    width: 18px; height: 7px; border-bottom: 2.5px solid #7a5a10; border-radius: 50%;
-}
-
-/* Chambres avec photos et prix en avant */
-.chambres-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-bottom: 70px; }
-.chambre-card { position: relative; overflow: hidden; }
-.chambre-img-wrap { position: relative; }
-.chambre-img-wrap img {
-    width: 100%; height: 250px; object-fit: cover; display: block;
-    filter: brightness(0.65) saturate(0.75);
-    transition: filter 0.35s;
-}
-.chambre-card:hover .chambre-img-wrap img { filter: brightness(0.8) saturate(0.9); }
-/* Lune déco sur chaque chambre */
-.chambre-lune-deco {
-    position: absolute; top: 12px; left: 14px;
-    font-size: 16px; opacity: 0.65; z-index: 2;
-}
-.chambre-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to top, rgba(13,13,13,0.96) 0%, transparent 100%);
-    padding: 18px 16px;
-}
-.chambre-nom { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: #F5F5F5; display: block; margin-bottom: 3px; }
-.chambre-desc { font-size: 11px; color: rgba(245,245,245,0.5); display: block; margin-bottom: 10px; }
-/* PRIX MIS EN AVANT */
-.chambre-prix {
-    display: inline-flex; align-items: baseline; gap: 5px;
-    background-color: #FFD700; color: #0D0D0D;
-    padding: 5px 12px;
-}
-.chambre-prix-chiffre { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; }
-.chambre-prix-unit { font-size: 10px; letter-spacing: 1px; font-weight: 600; }
-
-.hotel-accroche {
-    text-align: center; margin-bottom: 60px; padding: 30px;
-    border-left: 3px solid #FFD700; border-right: 3px solid #FFD700;
-}
-.hotel-accroche p { font-family: 'Cinzel', serif; font-size: 18px; color: rgba(245,245,245,0.8); font-style: italic; line-height: 1.6; }
-.hotel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
-.hotel-image img { width: 100%; height: 450px; object-fit: cover; }
-.hotel-text p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,0.7); margin-bottom: 32px; }
-.hotel-avantages { display: flex; flex-direction: column; gap: 20px; }
-.avantage-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,215,0,0.1); }
-.avantage-icon { font-size: 22px; min-width: 32px; }
-.avantage-title { display: block; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFD700; margin-bottom: 4px; }
-.avantage-desc { display: block; font-size: 12px; color: rgba(245,245,245,0.5); line-height: 1.5; }
-.hotel-avis { margin-bottom: 80px; }
-.avis-grid { display: grid; grid-template-columns: 1fr 1fr 0.6fr; gap: 24px; align-items: center; }
-.avis-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.1); padding: 28px 24px; }
-.avis-stars { color: #FFD700; font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
-.avis-card p { font-size: 13px; color: rgba(245,245,245,0.6); line-height: 1.7; font-style: italic; margin-bottom: 12px; }
-.avis-author { font-size: 11px; letter-spacing: 2px; color: #FFD700; }
-.avis-note { text-align: center; padding: 40px 24px; }
-.avis-score { font-family: 'Cinzel', serif; font-size: 64px; font-weight: 700; color: #FFD700; line-height: 1; margin-bottom: 8px; }
-.avis-source { font-size: 11px; letter-spacing: 2px; color: rgba(245,245,245,0.4); text-transform: uppercase; display: block; margin-top: 8px; }
-.hotel-resa { margin-bottom: 20px; }
-.resa-box { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.15); padding: 40px; }
-.resa-fields { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 20px; align-items: end; margin-bottom: 16px; }
-.resa-field { display: flex; flex-direction: column; gap: 8px; }
-.resa-field label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; }
-.resa-field input, .resa-field select {
-    background-color: #0D0D0D; border: 1px solid rgba(255,215,0,0.2);
-    color: #F5F5F5; padding: 12px 16px; font-family: 'Josefin Sans', sans-serif; font-size: 13px; outline: none;
-}
-.resa-field input[type="number"] { -moz-appearance: textfield; }
-.resa-field input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
-.resa-field input:focus, .resa-field select:focus { border-color: rgba(255,215,0,0.5); }
-.btn-resa {
-    background-color: #FFD700; color: #0D0D0D; border: none; padding: 14px 28px;
-    font-family: 'Josefin Sans', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease; white-space: nowrap;
-}
-.btn-resa:hover { background-color: #F5F5F5; }
-.resa-note { font-size: 11px; letter-spacing: 2px; color: rgba(245,245,245,0.3); text-transform: uppercase; text-align: center; }
-@media (max-width: 768px) {
-    .hotel-grid, .avis-grid { grid-template-columns: 1fr; }
-    .resa-fields { grid-template-columns: 1fr; }
-    .chambres-grid { grid-template-columns: 1fr; }
-    .lune-container { right: 10px; top: 60px; }
-}
-
-/* ===== HISTOIRE ===== */
-#histoire { background-color: #111111; min-height: auto; padding: 100px 40px; }
-.histoire-inner { display: grid; grid-template-columns: auto 1fr; gap: 70px; align-items: start; }
-.histoire-annee {
-    font-family: 'Cinzel', serif; font-size: clamp(70px, 9vw, 110px);
-    color: transparent; -webkit-text-stroke: 1px rgba(255,215,0,0.18);
-    line-height: 1; white-space: nowrap;
-}
-.histoire-text p { font-size: 15px; line-height: 1.9; color: rgba(245,245,245,0.65); margin-bottom: 22px; }
-.histoire-text p:first-child { font-size: 18px; color: rgba(245,245,245,0.85); font-style: italic; }
-.histoire-frise { display: flex; margin-top: 50px; border-top: 1px solid rgba(255,215,0,0.1); overflow: hidden; }
-.frise-item { flex: 1; padding: 18px 14px; border-right: 1px solid rgba(255,215,0,0.06); }
-.frise-item:last-child { border-right: none; }
-.frise-date { font-family: 'Cinzel', serif; font-size: 11px; color: #FFD700; letter-spacing: 1px; display: block; margin-bottom: 6px; }
-.frise-texte { font-size: 11px; color: rgba(245,245,245,0.45); line-height: 1.5; }
-@media (max-width: 768px) {
-    .histoire-inner { grid-template-columns: 1fr; gap: 30px; }
-    .histoire-annee { font-size: 60px; }
-}
-
-/* ===== A PROPOS ===== */
-#apropos { background-color: #0D0D0D; min-height: auto; padding: 100px 40px; }
-.apropos-texte { max-width: 700px; margin-bottom: 60px; }
-.apropos-texte p { font-size: 15px; line-height: 1.9; color: rgba(245,245,245,0.65); margin-bottom: 20px; }
-.apropos-texte p:first-child { font-size: 20px; font-family: 'Cinzel', serif; font-style: italic; color: rgba(245,245,245,0.85); }
-.apropos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.apropos-card { background-color: #1A1A1A; border: 1px solid rgba(255,215,0,0.08); padding: 32px 24px; }
-.apropos-icon { font-size: 36px; display: block; margin-bottom: 16px; }
-.apropos-card h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #FFD700; margin-bottom: 12px; }
-.apropos-card p { font-size: 12px; line-height: 1.7; color: rgba(245,245,245,0.5); }
-@media (max-width: 768px) { .apropos-grid { grid-template-columns: 1fr; } }
-
-/* ===== CONTACT ===== */
-#contact { background-color: #111111; min-height: auto; padding: 100px 40px; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.contact-infos { display: flex; flex-direction: column; gap: 0; }
-.contact-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,215,0,0.1); }
-.contact-icon { font-size: 22px; min-width: 32px; }
-.contact-title { display: block; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; margin-bottom: 6px; }
-.contact-value { display: block; font-size: 13px; color: rgba(245,245,245,0.6); line-height: 1.6; }
-.contact-map iframe { width: 100%; height: 450px; filter: grayscale(30%) brightness(0.85); }
-
-/* ===== FOOTER ===== */
-footer { background-color: #0A0A0A; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(255,215,0,0.1); }
-footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,245,245,0.3); }
-@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-.berbere-box { display:grid; grid-template-columns:1fr 1.5fr; gap:40px; align-items:center; border:1px solid rgba(255,215,0,0.2); padding:36px; background:rgba(255,215,0,0.02); margin-bottom:40px; }
-.berbere-logo-wrap { text-align:center; }
-.berbere-emoji { font-size:56px; margin-bottom:12px; }
-.berbere-box-title { font-family:'Cinzel',serif; font-size:22px; color:#FFD700; letter-spacing:4px; }
-.berbere-box-sub { font-size:10px; letter-spacing:4px; color:rgba(255,215,0,0.5); text-transform:uppercase; margin:6px 0 10px; }
-.berbere-box-addr { font-size:12px; color:rgba(245,245,245,0.45); margin-bottom:4px; }
-.berbere-box-tel { font-size:14px; color:#FFD700; font-weight:600; }
-.berbere-box-info p { font-size:14px; line-height:1.8; color:rgba(245,245,245,0.65); }
-@media(max-width:768px){ .berbere-box { grid-template-columns:1fr; text-align:center; } }
-
-.menu-overlay { display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0D0D0D; z-index:9999; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.menu-overlay.open { display:block; }
-.menu-overlay-inner { max-width:680px; margin:0 auto; padding:70px 20px 60px; }
-.menu-close-btn { position:fixed; top:16px; right:16px; background:rgba(255,215,0,0.15); border:1px solid rgba(255,215,0,0.5); color:#FFD700; width:48px; height:48px; border-radius:50%; font-size:20px; cursor:pointer; z-index:10000; }
-.menu-slides-title { font-family:'Cinzel',serif; font-size:20px; color:#FFD700; text-align:center; margin-bottom:20px; letter-spacing:3px; }
-.menu-cats-nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:24px; }
-.menu-cat-btn { background:rgba(255,215,0,0.06); border:1px solid rgba(255,215,0,0.2); color:rgba(245,245,245,0.6); padding:8px 14px; font-family:'Josefin Sans',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
-.menu-cat-btn.active,.menu-cat-btn:hover { background:rgba(255,215,0,0.12); border-color:rgba(255,215,0,0.5); color:#FFD700; }
-.menu-slide { display:none; }
-.menu-slide.active { display:block; }
-
-.privatisation-bloc { margin-top:70px; }
-.priv-inner { display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; background:#1A1A1A; border:1px solid rgba(255,215,0,0.12); padding:40px; }
-.priv-text p { font-size:15px; line-height:1.8; color:rgba(245,245,245,0.7); }
-.priv-40 { font-family:'Cinzel',serif; font-size:80px; color:transparent; -webkit-text-stroke:1px rgba(255,215,0,0.4); line-height:1; text-align:center; }
-.priv-40-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,215,0,0.5); text-align:center; }
-@media(max-width:768px){ .priv-inner { grid-template-columns:1fr; } }
-
-    </style>
-
+/* === MENU OVERLAY === */
+#menuOverlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0D0D0D;z-index:9999;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#menuOverlay.open{display:block}
+.menu-overlay-inner{max-width:700px;margin:0 auto;padding:70px 20px 60px}
+#menuCloseBtn{position:fixed;top:16px;right:16px;background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.4);color:var(--gold);width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;z-index:10000}
+.menu-overlay-title{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);text-align:center;margin-bottom:24px;letter-spacing:3px}
+.menu-cats-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+.menu-cat-btn{background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);color:rgba(245,245,245,0.6);padding:8px 14px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.menu-cat-btn.active,.menu-cat-btn:hover{background:rgba(255,215,0,0.12);border-color:rgba(255,215,0,0.5);color:var(--gold)}
+.menu-slide{display:none}
+.menu-slide.active{display:block}
+.menu-plat{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.menu-plat:last-child{border-bottom:none}
+.plat-info{flex:1;padding-right:16px}
+.plat-nom{font-size:13px;color:#F5F5F5;margin-bottom:3px}
+.plat-desc{font-size:11px;color:rgba(245,245,245,0.4);font-style:italic}
+.plat-prix{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);white-space:nowrap}
+</style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav id="navbar">
-    <div class="nav-logo" id="burger">
-        <div class="logo-circle"><span class="logo-letter">N</span></div>
-        <span class="menu-label">MENU</span>
-    </div>
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="#bar">Le Bar</a></li>
-        <li id="nav-resto-item">
-            <a href="#restauration" id="resto-link">Restauration</a>
-            <div class="sous-menu-resto" id="sous-menu-resto">
-                <a href="#restauration">Le Food</a>
-                <a href="#menus">Berbère King</a>
-                <a href="#click-collect">Privatisation</a>
-            </div>
-        </li>
-        <li class="nav-item-hotel" id="nav-hotel-item">
-            <a href="#hotel" id="hotel-link">Hôtel</a>
-            <div class="sous-menu" id="sous-menu-hotel">
-                <a href="#hotel">Nos chambres</a>
-                <a href="#hotel">Réserver</a>
-                <a href="#hotel">Tarifs</a>
-                <a href="#hotel">Infos pratiques</a>
-            </div>
-        </li>
-        <li><a href="#histoire">Notre histoire</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact">Nous trouver</a></li>
-    </ul>
+<div class="nav-logo" id="burger">
+<div class="logo-circle"><span class="logo-letter">N</span></div>
+<span class="menu-label">MENU</span>
+</div>
+<ul class="nav-links" id="nav-menu">
+<li><a href="#bar">Le Bar</a></li>
+<li><a href="#restauration" id="resto-link">Restauration</a>
+<div class="sous-menu-resto" id="sous-menu-resto">
+<a href="#restauration">Berbère King</a>
+<a href="#privatisation">Privatisation</a>
+</div></li>
+<li><a href="#hotel" id="hotel-link">Hôtel</a>
+<div class="sous-menu" id="sous-menu-hotel">
+<a href="#hotel">Nos chambres</a>
+<a href="#hotel">Location au mois</a>
+<a href="#contact">Nous contacter</a>
+</div></li>
+<li><a href="#histoire">Notre histoire</a></li>
+<li><a href="#apropos">À propos</a></li>
+<li><a href="#contact">Nous trouver</a></li>
+</ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-    <div class="hero-content">
-        <div class="hero-title-box">
-            <h1>Le Napoléon</h1>
-        </div>
-        <p class="hero-tagline">Bar · Hôtel · Restaurant</p>
-        <p class="hero-eyebrow">Accessible et proche de la gare SNCF de Gap</p>
-        <div class="hero-buttons">
-            <a href="#bar" class="btn-primary">Découvrir</a>
-            <a href="#contact" class="btn-secondary">Nous trouver</a>
-        </div>
-    </div>
-    <div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-title-box"><h1>Le Napoléon</h1></div>
+<p class="hero-tagline">Bar · Hôtel · Restaurant</p>
+<p class="hero-eyebrow">Accessible et proche de la gare SNCF de Gap</p>
+<div class="hero-buttons">
+<a href="#bar" class="btn-primary">Découvrir</a>
+<a href="#contact" class="btn-secondary">Nous trouver</a>
+</div>
+</div>
+<div class="hero-overlay"></div>
 </section>
 
 <!-- BAR -->
 <section id="bar">
-    <div class="section-container">
-        <div class="section-label">01</div>
-        <h2>Le Bar</h2>
-        <p class="section-sub">Un lieu de vie au cœur de Gap</p>
-        <div class="bar-ambiance">
-            <div class="bar-text">
-                <p>Que vous soyez de passage ou habitué du quartier, le bar du Napoléon vous accueille dans une ambiance chaleureuse et conviviale. Terrasse en été, intérieur cosy en hiver.</p>
-                <div class="bar-infos">
-                    <div class="info-item"><span class="info-label">Horaires</span><span class="info-value">Lun–Sam — 6h30 · Dim & jours fériés — 7h</span></div>
-                    <div class="info-item"><span class="info-label">Terrasse</span><span class="info-value">Disponible aux beaux jours</span></div>
-                    <div class="info-item"><span class="info-label">Ambiance</span><span class="info-value">Locale, conviviale, authentique</span></div>
-                </div>
-            </div>
-            <div class="bar-image">
-                <img src="https://images.pexels.com/photos/2111016/pexels-photo-2111016.jpeg" alt="Bar Le Napoléon">
-            </div>
-        </div>
-        <div class="bar-discover-btn">
-            <button class="btn-toggle-bar" id="btnBar">Découvrir le bar <span class="btn-arrow">↓</span></button>
-        </div>
-        <div class="bar-extra" id="barExtra">
-            <div class="bar-boissons">
-                <h3 class="bloc-title">Nos incontournables</h3>
-                <div class="boissons-grid">
-                    <div class="boisson-card"><span class="boisson-icon">🍺</span><h4>Bière pression</h4><p>Fraîche et généreuse, servie comme il se doit.</p></div>
-                    <div class="boisson-card"><span class="boisson-icon">☕</span><h4>Café du comptoir</h4><p>Le rendez-vous des habitués, chaque matin.</p></div>
-                    <div class="boisson-card"><span class="boisson-icon">🥃</span><h4>Cocktail maison</h4><p>La signature du Napoléon — à découvrir.</p></div>
-                </div>
-            </div>
-            <div class="bar-events">
-                <h3 class="bloc-title">Agenda & Événements</h3>
-                <div class="events-grid">
-                    <div class="event-card"><span class="event-date">À venir</span><h4>Soirée DJ</h4><p>Une nuit de musique et de bonne humeur au Napoléon.</p><span class="event-badge">Soirée</span></div>
-                    <div class="event-card"><span class="event-date">À venir</span><h4>Retransmission match</h4><p>Vivez les grands matchs en direct avec nous.</p><span class="event-badge">Sport</span></div>
-                    <div class="event-card event-priv"><span class="event-date">Sur réservation</span><h4>Privatisation</h4><p>Le bar disponible pour vos événements privés et groupes.</p><span class="event-badge">Privé</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="section-container">
+<div class="section-label">01</div>
+<h2>Le Bar</h2>
+<p class="section-sub">Un lieu de vie au cœur de Gap</p>
+<div class="bar-ambiance">
+<div class="bar-text">
+<p>Que vous soyez de passage ou habitué du quartier, le bar du Napoléon vous accueille dans une ambiance chaleureuse et conviviale. Terrasse en été, intérieur cosy en hiver.</p>
+<div class="bar-infos">
+<div class="info-item"><span class="info-label">Horaires</span><span class="info-value">Lun–Sam : 6h30 — Dim &amp; jours fériés : 7h</span></div>
+<div class="info-item"><span class="info-label">Terrasse</span><span class="info-value">Disponible aux beaux jours</span></div>
+<div class="info-item"><span class="info-label">Ambiance</span><span class="info-value">Locale, conviviale, authentique</span></div>
+</div>
+</div>
+<div class="bar-image"><img src="https://images.pexels.com/photos/2111016/pexels-photo-2111016.jpeg" alt="Bar Le Napoléon"></div>
+</div>
+<div class="bar-discover-btn">
+<button class="btn-toggle" id="btnBar">Découvrir le bar <span id="arrowBar">↓</span></button>
+</div>
+<div class="bar-extra" id="barExtra">
+<div class="bar-boissons">
+<h3 class="bloc-title">Nos incontournables</h3>
+<div class="boissons-grid">
+<div class="boisson-card"><span class="boisson-icon">🍺</span><h4>Bière pression</h4><p>Fraîche et généreuse, servie comme il se doit.</p></div>
+<div class="boisson-card"><span class="boisson-icon">☕</span><h4>Café du comptoir</h4><p>Le rendez-vous des habitués, chaque matin.</p></div>
+<div class="boisson-card"><span class="boisson-icon">🥃</span><h4>Cocktail maison</h4><p>La signature du Napoléon — à découvrir.</p></div>
+</div>
+</div>
+<div class="bar-events">
+<h3 class="bloc-title">Agenda &amp; Événements</h3>
+<div class="events-grid">
+<div class="event-card"><span class="event-date">À venir</span><h4>Soirée DJ</h4><p>Une nuit de musique et de bonne humeur au Napoléon.</p><span class="event-badge">Soirée</span></div>
+<div class="event-card"><span class="event-date">À venir</span><h4>Retransmission match</h4><p>Vivez les grands matchs en direct avec nous.</p><span class="event-badge">Sport</span></div>
+<div class="event-card event-priv"><span class="event-date">Sur réservation</span><h4>Privatisation</h4><p>Le bar disponible pour vos événements privés.</p><span class="event-badge">Privé</span></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- RESTAURATION -->
 <section id="restauration">
-    <div class="couverts-overlay" id="couverts">
-        <div class="couvert-gauche">
-            <svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="27" y="0" width="6" height="180" rx="3" fill="#FFD700"/>
-                <rect x="10" y="0" width="6" height="80" rx="3" fill="#FFD700"/>
-                <rect x="44" y="0" width="6" height="80" rx="3" fill="#FFD700"/>
-                <rect x="10" y="80" width="40" height="6" rx="3" fill="#FFD700"/>
-                <rect x="27" y="180" width="6" height="120" rx="3" fill="#FFD700"/>
-            </svg>
-        </div>
-        <div class="couvert-droite">
-            <svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="27" y="0" width="6" height="300" rx="3" fill="#FFD700"/>
-                <path d="M33 0 Q60 60 33 120" fill="#FFD700"/>
-            </svg>
-        </div>
-    </div>
-    <div class="section-container resto-content" id="resto-content">
-        <div class="section-label">02</div>
-        <h2>Restauration</h2>
-        <p class="section-sub">Une cuisine généreuse, des saveurs authentiques</p>
-        <div class="resto-grid">
-            <div class="resto-image">
-                <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg" alt="Restauration Le Napoléon">
-            </div>
-            <div class="resto-text">
-                <p>Découvrez notre concept food pensé pour vous régaler à toute heure. Des produits frais, des recettes généreuses, dans un cadre convivial et chaleureux.</p>
-                <div class="resto-cards">
-                    <div class="resto-card" style="border-color:rgba(255,215,0,0.35);background:rgba(255,215,0,0.03);">
-                        <span class="badge-soon" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:12px;">BIENTÔT</span>
-                        <span class="resto-card-icon">🍽️</span>
-                        <h3>Buffet à volonté</h3>
-                        <p>Un buffet généreux bientôt disponible — cuisine locale, produits frais, à volonté.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MENUS BERBERE KING -->
-        <div class="resto-menus" id="menus">
-            <div class="berbere-box">
-                <div class="berbere-logo-wrap">
-                    <div class="berbere-emoji">🍔</div>
-                    <div class="berbere-box-title">BERBÈRE KING</div>
-                    <div class="berbere-box-sub">FOOD TRUCK · GAP</div>
-                    <div class="berbere-box-addr">19 Avenue Commandant Dumont</div>
-                    <div class="berbere-box-tel">06 88 19 48 00</div>
-                </div>
-                <div class="berbere-box-info">
-                    <p>Burgers généreux, sandwichs, paninis, salades — une cuisine street food savoureuse rattachée au Napoléon.</p>
-                    <a href="#" onclick="openMenuOverlay();return false;" class="btn-primary" style="display:inline-block;margin-top:20px;background:transparent;border:1px solid rgba(255,215,0,0.5);color:#FFD700;">DÉCOUVRIR NOTRE MENU →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- PRIVATISATION -->
-        <div class="privatisation-bloc" id="click-collect">
-            <h3 class="bloc-title">Privatisation</h3>
-            <div class="priv-inner">
-                <div class="priv-text">
-                    <p>Anniversaire, soirée d'entreprise, repas de groupe — le Napoléon met ses portes à votre disposition pour que votre événement se passe comme il se doit.</p>
-                    <div class="bar-infos" style="margin-top:20px;">
-                        <div class="info-item"><span class="info-label">Capacité</span><span class="info-value">Jusqu'à 40 personnes</span></div>
-                        <div class="info-item"><span class="info-label">Contact</span><span class="info-value">04 92 57 96 17</span></div>
-                    </div>
-                    <a href="tel:0492579617" class="btn-primary" style="display:inline-block;margin-top:24px;">Réserver votre événement</a>
-                </div>
-                <div class="priv-chiffre">
-                    <div class="priv-40">40</div>
-                    <div class="priv-40-label">personnes max</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="couverts-overlay">
+<div class="couvert-gauche"><svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="27" y="0" width="6" height="180" rx="3" fill="#FFD700"/><rect x="10" y="0" width="6" height="80" rx="3" fill="#FFD700"/><rect x="44" y="0" width="6" height="80" rx="3" fill="#FFD700"/><rect x="10" y="80" width="40" height="6" rx="3" fill="#FFD700"/><rect x="27" y="180" width="6" height="120" rx="3" fill="#FFD700"/></svg></div>
+<div class="couvert-droite"><svg viewBox="0 0 60 300" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="27" y="0" width="6" height="300" rx="3" fill="#FFD700"/><path d="M33 0 Q60 60 33 120" fill="#FFD700"/></svg></div>
+</div>
+<div class="section-container resto-content" id="resto-content">
+<div class="section-label">02</div>
+<h2>Restauration</h2>
+<p class="section-sub">Une cuisine généreuse, des saveurs authentiques</p>
+<div class="resto-grid">
+<div class="resto-image"><img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg" alt="Restauration Le Napoléon"></div>
+<div class="resto-text">
+<p>Découvrez notre concept food pensé pour vous régaler à toute heure. Des produits frais, des recettes généreuses, dans un cadre convivial et chaleureux.</p>
+<div class="buffet-card">
+<span class="badge-soon">BIENTÔT</span>
+<h3>Buffet à volonté</h3>
+<p>Un buffet généreux bientôt disponible — cuisine locale, produits frais, à volonté. Restez connectés.</p>
+</div>
+</div>
+</div>
+<div class="berbere-section">
+<h3 class="bloc-title">Berbère King</h3>
+<div class="berbere-box">
+<div class="berbere-visual">
+<span class="berbere-emoji">🍔</span>
+<div class="berbere-name">BERBÈRE KING</div>
+<div class="berbere-type">Food Truck · Gap</div>
+<div class="berbere-addr">19 Avenue Commandant Dumont</div>
+<div class="berbere-tel">06 88 19 48 00</div>
+</div>
+<div class="berbere-info">
+<p>Burgers généreux, sandwichs, paninis, salades — une cuisine street food savoureuse rattachée au Napoléon.</p>
+<button class="btn-menu" onclick="openMenu()">DÉCOUVRIR NOTRE MENU →</button>
+</div>
+</div>
+</div>
+</div>
 </section>
+
+<!-- PRIVATISATION -->
+<section id="privatisation">
+<div class="section-container">
+<div class="section-label">03</div>
+<h2>Privatisation</h2>
+<p class="section-sub">Votre événement, notre maison</p>
+<div class="priv-grid">
+<div class="priv-text">
+<p>Anniversaire, soirée d'entreprise, repas de groupe — le Napoléon met ses portes à votre disposition pour que votre événement se passe comme il se doit.</p>
+<div class="bar-infos" style="margin-bottom:32px">
+<div class="info-item"><span class="info-label">Capacité</span><span class="info-value">Jusqu'à 40 personnes</span></div>
+<div class="info-item"><span class="info-label">Contact</span><span class="info-value">04 92 57 96 17</span></div>
+</div>
+<a href="tel:0492579617" class="btn-primary">Réserver votre événement</a>
+</div>
+<div>
+<div class="priv-number">40</div>
+<div class="priv-number-label">personnes maximum</div>
+<div class="priv-tags">
+<span class="priv-tag">🎂 Anniversaires</span>
+<span class="priv-tag">💼 Entreprises</span>
+<span class="priv-tag">🍽️ Repas de groupe</span>
+<span class="priv-tag">🥂 Soirées privées</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOTEL -->
 <section id="hotel">
-    <div class="hotel-stars-bg"></div>
-    <div class="hotel-cloud hotel-cloud-1"></div>
-    <div class="hotel-cloud hotel-cloud-2"></div>
-    <div class="hotel-cloud hotel-cloud-3"></div>
-
-    <!-- LUNE avec bonnet -->
-    <div class="lune-container">
-        <div class="lune-bonnet">
-            <div class="bonnet-corps"><div class="bonnet-pompon"></div></div>
-            <div class="bonnet-bord"></div>
-        </div>
-        <div class="lune-visage">
-            <div class="lune-yeux"><div class="lune-oeil"></div><div class="lune-oeil"></div></div>
-            <div class="lune-joue gauche"></div>
-            <div class="lune-joue droite"></div>
-            <div class="lune-sourire"></div>
-        </div>
-    </div>
-
-    <div class="section-container">
-        <div class="section-label">03</div>
-        <h2>L'Hôtel</h2>
-        <p class="section-sub">Confort et simplicité au cœur de Gap</p>
-
-        <div class="hotel-accroche">
-            <p>Le Napoléon propose des chambres à la location au mois. Contactez-nous au 04 92 57 96 17 pour les disponibilités.</p>
-        </div>
-
-        <!-- CHAMBRES -->
-        <h3 class="bloc-title">Nos chambres</h3>
-        <div class="hotel-grid">
-            <div class="hotel-image">
-                <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Chambre Hôtel Le Napoléon">
-            </div>
-            <div class="hotel-text">
-                <p>Le Napoléon propose des chambres à la location au mois, idéales pour les séjours longue durée, les travailleurs en déplacement ou les personnes en transition.</p>
-                <div class="hotel-avantages">
-                    <div class="avantage-item"><span class="avantage-icon">🚉</span><div><span class="avantage-title">À 5 min de la gare</span><span class="avantage-desc">Accès facile, stationnement à proximité</span></div></div>
-                    <div class="avantage-item"><span class="avantage-icon">🏙️</span><div><span class="avantage-title">Centre-ville de Gap</span><span class="avantage-desc">Commerces et activités à pied</span></div></div>
-                    <div class="avantage-item"><span class="avantage-icon">📞</span><div><span class="avantage-title">Location au mois</span><span class="avantage-desc">Contactez-nous directement pour les disponibilités</span></div></div>
-                </div>
-                <a href="tel:0492579617" class="btn-primary" style="display:inline-block;margin-top:32px;">Nous contacter — 04 92 57 96 17</a>
-            </div>
-        </div>
+<div class="hotel-stars-bg"></div>
+<div class="hotel-cloud hotel-cloud-1"></div>
+<div class="hotel-cloud hotel-cloud-2"></div>
+<div class="hotel-cloud hotel-cloud-3"></div>
+<div class="lune-container">
+<div class="lune-bonnet"><div class="bonnet-corps"><div class="bonnet-pompon"></div></div><div class="bonnet-bord"></div></div>
+<div class="lune-visage"><div class="lune-yeux"><div class="lune-oeil"></div><div class="lune-oeil"></div></div><div class="lune-joue gauche"></div><div class="lune-joue droite"></div><div class="lune-sourire"></div></div>
+</div>
+<div class="section-container">
+<div class="section-label">04</div>
+<h2>L'Hôtel</h2>
+<p class="section-sub">Confort et simplicité au cœur de Gap</p>
+<div class="hotel-accroche"><p>Le Napoléon propose des chambres à la location au mois. Contactez-nous au 04 92 57 96 17 pour les disponibilités.</p></div>
+<h3 class="bloc-title">Nos chambres</h3>
+<div class="hotel-grid">
+<div class="hotel-image"><img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Chambre Le Napoléon"></div>
+<div class="hotel-text">
+<p>Des chambres à la location au mois, idéales pour les séjours longue durée, les travailleurs en déplacement ou les personnes en transition.</p>
+<div class="hotel-avantages">
+<div class="avantage-item"><span class="avantage-icon">🚉</span><div><span class="avantage-title">À 5 min de la gare</span><span class="avantage-desc">Accès facile, stationnement à proximité</span></div></div>
+<div class="avantage-item"><span class="avantage-icon">🏙️</span><div><span class="avantage-title">Centre-ville de Gap</span><span class="avantage-desc">Commerces et activités à pied</span></div></div>
+<div class="avantage-item"><span class="avantage-icon">📅</span><div><span class="avantage-title">Location au mois uniquement</span><span class="avantage-desc">Pas de réservation courte durée</span></div></div>
+</div>
+<a href="tel:0492579617" class="btn-primary" style="display:inline-block;margin-top:32px">Nous contacter — 04 92 57 96 17</a>
+</div>
+</div>
+</div>
+</section>
 
 <!-- NOTRE HISTOIRE -->
 <section id="histoire">
-    <div class="section-container">
-        <div class="section-label">04</div>
-        <h2>Notre histoire</h2>
-        <p class="section-sub">Une adresse ancrée dans le cœur de Gap</p>
-        <div class="histoire-inner">
-            <div class="histoire-annee">1970</div>
-            <div class="histoire-text">
-                <p>Le Napoléon, c'est une histoire de quartier. Depuis des décennies, ce bar-hôtel-restaurant est une halte incontournable pour les Gapençais et les voyageurs de passage dans les Hautes-Alpes.</p>
-                <p>Niché à deux pas de la gare, il a vu défiler des générations d'habitués, de travailleurs, de randonneurs et de touristes venus découvrir la montagne provençale. Chaque comptoir, chaque chambre porte la mémoire de ces rencontres.</p>
-                <p>Aujourd'hui sous une direction renouvelée, le Napoléon entre dans une nouvelle ère — sans oublier ses racines. Même chaleur, même authenticité, avec une ambition : vous offrir le meilleur de Gap.</p>
-            </div>
-        </div>
-        <div class="histoire-frise">
-            <div class="frise-item"><span class="frise-date">Années 70</span><span class="frise-texte">Ouverture du bar-hôtel au cœur de Gap</span></div>
-            <div class="frise-item"><span class="frise-date">Années 90</span><span class="frise-texte">Agrandissement et ouverture de la restauration</span></div>
-            <div class="frise-item"><span class="frise-date">2010</span><span class="frise-texte">Rénovation des chambres, modernisation</span></div>
-            <div class="frise-item"><span class="frise-date">2024</span><span class="frise-texte">Reprise par un nouveau propriétaire</span></div>
-            <div class="frise-item"><span class="frise-date">2025</span><span class="frise-texte">Nouvelle carte, nouveau site — même âme</span></div>
-        </div>
-    </div>
+<div class="section-container">
+<div class="section-label">05</div>
+<h2>Notre histoire</h2>
+<p class="section-sub">Une adresse ancrée dans le cœur de Gap</p>
+<div class="histoire-inner">
+<div class="histoire-annee">1970</div>
+<div class="histoire-text">
+<p>Le Napoléon, c'est une histoire de quartier. Depuis des décennies, ce bar-hôtel-restaurant est une halte incontournable pour les Gapençais et les voyageurs de passage dans les Hautes-Alpes.</p>
+<p>Niché à deux pas de la gare, il a vu défiler des générations d'habitués, de travailleurs, de randonneurs et de touristes venus découvrir la montagne provençale. Chaque comptoir, chaque chambre porte la mémoire de ces rencontres.</p>
+<p>Aujourd'hui sous une direction renouvelée, le Napoléon entre dans une nouvelle ère — sans oublier ses racines. Même chaleur, même authenticité, avec une ambition : vous offrir le meilleur de Gap.</p>
+</div>
+</div>
+<div class="histoire-frise">
+<div class="frise-item"><span class="frise-date">Années 70</span><span class="frise-texte">Ouverture du bar-hôtel au cœur de Gap</span></div>
+<div class="frise-item"><span class="frise-date">Années 90</span><span class="frise-texte">Agrandissement et ouverture de la restauration</span></div>
+<div class="frise-item"><span class="frise-date">2010</span><span class="frise-texte">Rénovation des chambres, modernisation</span></div>
+<div class="frise-item"><span class="frise-date">2024</span><span class="frise-texte">Reprise par un nouveau propriétaire</span></div>
+<div class="frise-item"><span class="frise-date">2025</span><span class="frise-texte">Nouvelle carte, nouveau site — même âme</span></div>
+</div>
+</div>
 </section>
 
-<!-- À PROPOS -->
+<!-- A PROPOS -->
 <section id="apropos">
-    <div class="section-container">
-        <div class="section-label">05</div>
-        <h2>À propos de nous</h2>
-        <p class="section-sub">Une équipe locale au service de votre séjour</p>
-        <div class="apropos-texte">
-            <p>Le Napoléon, c'est une adresse que les Gapençais connaissent depuis toujours. Karim, c'est un enfant de Gap. Le Napoléon, il le connaît depuis longtemps — et quand l'occasion s'est présentée de le reprendre, il n'a pas hésité.</p>
-            <p>Ce qui frappe chez lui, c'est l'attachement à ce lieu. Il connaît les anciens propriétaires, il a entendu les histoires du comptoir, il sait ce que ce bar représente pour les Gapençais. Reprendre le Napoléon, c'était pas juste ouvrir un commerce — c'était continuer quelque chose.</p>
-            <p>Il a les idées qui fusent, l'envie de bien faire, et un vrai sens de l'accueil. Ses clients le lui rendent bien.</p>
-        </div>
-    </div>
+<div class="section-container">
+<div class="section-label">06</div>
+<h2>À propos de nous</h2>
+<p class="section-sub">Une équipe locale au service de votre séjour</p>
+<div class="apropos-texte">
+<p>Karim, c'est un enfant de Gap.</p>
+<p>Le Napoléon, il le connaît depuis longtemps — et quand l'occasion s'est présentée de le reprendre, il n'a pas hésité. Ce qui frappe chez lui, c'est l'attachement à ce lieu. Il connaît les anciens propriétaires, il a entendu les histoires du comptoir, il sait ce que ce bar représente pour les Gapençais.</p>
+<p>Reprendre le Napoléon, c'était pas juste ouvrir un commerce — c'était continuer quelque chose. Il a les idées qui fusent, l'envie de bien faire, et un vrai sens de l'accueil. Ses clients le lui rendent bien.</p>
+</div>
+</div>
 </section>
 
 <!-- AVIS -->
-<section id="avis" style="background-color:#111111;min-height:auto;padding:80px 40px;">
-    <div class="section-container">
-        <h2 style="font-size:36px;margin-bottom:8px;">Avis clients</h2>
-        <p class="section-sub">La parole à nos habitués</p>
-        <div class="avis-grid">
-            <div class="avis-card"><div class="avis-stars">★★★★★</div><p>"Un très bon accueil et le patron au top. Je recommande !"</p><span class="avis-author">— Salvatore B.</span></div>
-            <div class="avis-card"><div class="avis-stars">★★★★★</div><p>"En transit à Gap, j'ai trouvé ici exactement ce qu'il me fallait. Simple, efficace, chaleureux."</p><span class="avis-author">— Julien D.</span></div>
-            <div class="avis-card avis-note"><div class="avis-score">4.2</div><div class="avis-stars">★★★★☆</div><span class="avis-source">32 avis Google</span></div>
-        </div>
-    </div>
+<section id="avis">
+<div class="section-container">
+<div class="section-label">CE QU'ILS EN DISENT</div>
+<h2>Avis clients</h2>
+<p class="section-sub">La parole à nos habitués</p>
+<div class="avis-grid">
+<div class="avis-card"><div class="avis-stars">★★★★★</div><p>"Un très bon accueil et le patron au top. Je recommande !"</p><span class="avis-author">— Salvatore B.</span></div>
+<div class="avis-card"><div class="avis-stars">★★★★★</div><p>"En transit à Gap, j'ai trouvé ici exactement ce qu'il me fallait. Simple, efficace, chaleureux."</p><span class="avis-author">— Julien D.</span></div>
+<div class="avis-card avis-note"><div class="avis-score">4.2</div><div class="avis-stars">★★★★☆</div><span class="avis-source">32 avis Google</span></div>
+</div>
+</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-    <div class="section-container">
-        <div class="section-label">06</div>
-        <h2>Nous trouver</h2>
-        <p class="section-sub">Au cœur de Gap, à 5 min de la gare</p>
-        <div class="contact-grid">
-            <div class="contact-infos">
-                <div class="contact-item"><span class="contact-icon">📍</span><div><span class="contact-title">Adresse</span><span class="contact-value">19 Avenue Commandant Dumont<br>05000 Gap, Hautes-Alpes</span></div></div>
-                <div class="contact-item"><span class="contact-icon">🚉</span><div><span class="contact-title">Gare SNCF de Gap</span><span class="contact-value">À 5 minutes à pied — idéal pour les voyageurs</span></div></div>
-                <div class="contact-item"><span class="contact-icon">📞</span><div><span class="contact-title">Téléphone</span><span class="contact-value">04 92 57 96 17</span></div></div>
-                <div class="contact-item"><span class="contact-icon">🕐</span><div><span class="contact-title">Horaires bar</span><span class="contact-value">Lun–Sam : 6h30 — Dim & jours fériés : 7h</span></div></div>
-                <a href="https://maps.google.com/?q=19+Avenue+Commandant+Dumont+Gap" target="_blank" class="btn-primary" style="margin-top: 32px; display: inline-block;">Ouvrir dans Google Maps</a>
-            </div>
-            <div class="contact-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.5!2d6.0835!3d44.5587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cb3c!2sBar+Le+Napol%C3%A9on+Gap!5e0!3m2!1sfr!2sfr!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </div>
+<div class="section-container">
+<div class="section-label">07</div>
+<h2>Nous trouver</h2>
+<p class="section-sub">Au cœur de Gap, à 5 min de la gare</p>
+<div class="contact-grid">
+<div class="contact-infos">
+<div class="contact-item"><span class="contact-icon">📍</span><div><span class="contact-title">Adresse</span><span class="contact-value">19 Avenue Commandant Dumont<br>05000 Gap, Hautes-Alpes</span></div></div>
+<div class="contact-item"><span class="contact-icon">🚉</span><div><span class="contact-title">Gare SNCF de Gap</span><span class="contact-value">À 5 minutes à pied</span></div></div>
+<div class="contact-item"><span class="contact-icon">📞</span><div><span class="contact-title">Téléphone</span><span class="contact-value">04 92 57 96 17</span></div></div>
+<div class="contact-item"><span class="contact-icon">🕐</span><div><span class="contact-title">Horaires bar</span><span class="contact-value">Lun–Sam : 6h30 — Dim &amp; jours fériés : 7h</span></div></div>
+<a href="https://maps.google.com/?q=19+Avenue+Commandant+Dumont+Gap" target="_blank" class="btn-primary" style="margin-top:32px;display:inline-block">Ouvrir dans Google Maps</a>
+</div>
+<div class="contact-map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.5!2d6.0835!3d44.5587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cb3c!2sBar+Le+Napol%C3%A9on+Gap!5e0!3m2!1sfr!2sfr!4v1" width="100%" height="400" style="border:0" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
 </section>
 
 <footer>
-    <p>© 2026 Bar Le Napoléon — Gap, Hautes-Alpes — Site réalisé par <a href="https://getdbstudio.fr" style="color: #FFD700;">DB Studio</a></p>
+<p>© 2026 Bar Le Napoléon — Gap, Hautes-Alpes — Site réalisé par <a href="https://getdbstudio.fr" style="color:#FFD700">DB Studio</a></p>
 </footer>
 
+<!-- MENU OVERLAY - EN DEHORS DE TOUT -->
+<div id="menuOverlay">
+<button id="menuCloseBtn" onclick="closeMenu()">✕</button>
+<div class="menu-overlay-inner">
+<h3 class="menu-overlay-title">🍔 Berbère King — La Carte</h3>
+<div class="menu-cats-nav" id="menuCatsNav"></div>
+<div id="menuSlidesWrap"></div>
+</div>
+</div>
+
 <script>
-function switchCat(idx) {
-    document.querySelectorAll('.menu-cat-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
-    document.querySelectorAll('.menu-slide').forEach((s,i) => s.classList.toggle('active', i===idx));
-}
-function openMenuOverlay() {
+// === MENU OVERLAY ===
+function openMenu() {
     document.getElementById('menuOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
+function closeMenu() {
+    document.getElementById('menuOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function switchCat(idx) {
+    document.querySelectorAll('.menu-cat-btn').forEach(function(b,i){ b.classList.toggle('active', i===idx); });
+    document.querySelectorAll('.menu-slide').forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+}
 
+// Fermer overlay en cliquant en dehors
+document.getElementById('menuOverlay').addEventListener('click', function(e){
+    if(e.target === this) closeMenu();
+});
+
+// === DATA MENU ===
+var cats = [
+    {l:"🍔 Burgers", items:[
+        {n:"Cheese Berbère", d:"Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, sauce Big Burger", p:"6,90€"},
+        {n:"Chicken Berbère", d:"Pain, poulet pané 135g, confit d'oignon, cheddar, salade, tomate, sauce Big Burger", p:"6,90€"},
+        {n:"Veggie Berbère", d:"Pain, falafel, confit d'oignon, cheddar, salade, tomate, sauce Big Burger ou Big Vegan", p:"6,90€"},
+        {n:"Raclette Berbère", d:"Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, fromage raclette, poitrine boeuf", p:"8,90€"},
+        {n:"Chèvre Miel", d:"Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, chèvre, miel, sauce cheezy", p:"8,90€"},
+        {n:"Roquefort", d:"Pain, steak 150g, confit d'oignon, cheddar, salade, tomate, roquefort, sauce cheezy", p:"9,90€"},
+        {n:"Double Cheese ✨", d:"2 steaks 150g, sauce burger, salade, tomate, oignons, cheddar, pain brioché", p:"12,90€"},
+        {n:"Burger du Mois — Le Morbier", d:"Steak 150g, rosties, oignons confits miel, morbier, salade, tomate", p:"11,90€"}
+    ]},
+    {l:"🥪 Sandwichs", items:[
+        {n:"L'Américain", d:"Pain demi-flûte, steak 150g, confit d'oignon, cheddar, salade, tomate, frites", p:"8,90€"},
+        {n:"Le Mexicain", d:"Pain, poulet mariné épices 120g, confit d'oignon, cheddar, salade, tomate, frites", p:"8,90€"}
+    ]},
+    {l:"🫓 Paninis", items:[
+        {n:"Panini Kebab ✨", d:"Salade, tomate, oignons, viande kebab, sauce au choix", p:"5,90€"},
+        {n:"3 Fromages", d:"Roquefort, chèvre, mozzarella", p:"5,90€"},
+        {n:"Poulet Curry", d:"", p:"5,90€"},
+        {n:"Mexicain", d:"Poulet mariné aux épices", p:"5,90€"},
+        {n:"Galette Kebab", d:"Galette, veau et volaille, salade, tomate, oignons, sauce au choix", p:"6,90€"}
+    ]},
+    {l:"🥗 Salades", items:[
+        {n:"Veggie", d:"Salade, falafel, tomates cerise, olive noir, oeuf, oignons confit, sauce veggie", p:"6,90€"},
+        {n:"César", d:"Salade, poulet pané, tomates cerise, olive noir, oeuf, oignons confit, sauce césar", p:"7,50€"}
+    ]},
+    {l:"🍟 Friture", items:[
+        {n:"Petite Frite", d:"", p:"2,50€"},
+        {n:"Grande Frite", d:"", p:"4€"},
+        {n:"Tenders x2", d:"", p:"4,50€"},
+        {n:"Tenders x4", d:"", p:"8€"}
+    ]},
+    {l:"🎒 Menus", items:[
+        {n:"Menu Étudiant", d:"1 Burger + Petite Frite + Boisson — Carte étudiant", p:"10€"},
+        {n:"Menu Enfant — Le Bambino", d:"Mini Cheese + Petite Frite + Capri-Sun + Compote + Jouet + Bonbon", p:"5,90€"},
+        {n:"Petit Déjeuner", d:"Café + Pain ou croissant + Jus d'orange", p:"3€"},
+        {n:"Menu du Jour", d:"Entrée + Plat + Dessert — Change chaque jour", p:"18€"}
+    ]},
+    {l:"🥤 Boissons", items:[
+        {n:"Coca, Sprite, Orangina, Fanta, Perrier, Ice Tea, Oasis", d:"", p:"2€"},
+        {n:"Evian", d:"", p:"1,50€"}
+    ]}
+];
+
+// Build menu
+var nav = document.getElementById('menuCatsNav');
+var wrap = document.getElementById('menuSlidesWrap');
+cats.forEach(function(cat, i) {
+    var btn = document.createElement('button');
+    btn.className = 'menu-cat-btn' + (i===0 ? ' active' : '');
+    btn.textContent = cat.l;
+    btn.setAttribute('onclick', 'switchCat(' + i + ')');
+    nav.appendChild(btn);
+
+    var slide = document.createElement('div');
+    slide.className = 'menu-slide' + (i===0 ? ' active' : '');
+    var html = '';
+    cat.items.forEach(function(item) {
+        html += '<div class="menu-plat"><div class="plat-info"><div class="plat-nom">' + item.n + '</div>';
+        if(item.d) html += '<div class="plat-desc">' + item.d + '</div>';
+        html += '</div><div class="plat-prix">' + item.p + '</div></div>';
+    });
+    slide.innerHTML = html;
+    wrap.appendChild(slide);
+});
+
+// === NAVBAR ===
 document.addEventListener('DOMContentLoaded', function() {
-
-    // === NAVBAR ===
-    const logo = document.querySelector('.logo-circle');
-    const navMenu = document.getElementById('nav-menu');
-    const hotelLink = document.getElementById('hotel-link');
-    const sousMenu = document.getElementById('sous-menu-hotel');
-    const restoLink = document.getElementById('resto-link');
-    const sousMenuResto = document.getElementById('sous-menu-resto');
+    var logo = document.querySelector('.logo-circle');
+    var navMenu = document.getElementById('nav-menu');
+    var hotelLink = document.getElementById('hotel-link');
+    var sousMenuHotel = document.getElementById('sous-menu-hotel');
+    var restoLink = document.getElementById('resto-link');
+    var sousMenuResto = document.getElementById('sous-menu-resto');
 
     function fermerNavbar() {
         navMenu.classList.remove('open');
-        sousMenu.classList.remove('open');
+        sousMenuHotel.classList.remove('open');
         sousMenuResto.classList.remove('open');
     }
 
-    // Toggle navbar au clic logo
-    logo.addEventListener('click', (e) => {
+    logo.addEventListener('click', function(e) {
         e.stopPropagation();
-        logo.classList.add('spin');
-        setTimeout(() => logo.classList.remove('spin'), 600);
-        const isOpen = navMenu.classList.contains('open');
-        if (isOpen) {
-            fermerNavbar();
-        } else {
-            navMenu.classList.add('open');
-        }
+        navMenu.classList.contains('open') ? fermerNavbar() : navMenu.classList.add('open');
     });
 
-    // Empêcher les clics dans le menu de fermer
-    navMenu.addEventListener('click', (e) => e.stopPropagation());
+    navMenu.addEventListener('click', function(e) { e.stopPropagation(); });
 
-    // Sous-menu Hôtel
-    hotelLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        sousMenu.classList.toggle('open');
+    hotelLink.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        sousMenuHotel.classList.toggle('open');
         sousMenuResto.classList.remove('open');
     });
 
-    // Sous-menu Restauration
-    restoLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    restoLink.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
         sousMenuResto.classList.toggle('open');
-        sousMenu.classList.remove('open');
+        sousMenuHotel.classList.remove('open');
     });
 
-    // Fermer sur clic lien simple
-    navMenu.querySelectorAll('a').forEach(link => {
-        if (link.id !== 'hotel-link' && link.id !== 'resto-link') {
-            link.addEventListener('click', () => fermerNavbar());
+    navMenu.querySelectorAll('a').forEach(function(link) {
+        if(link.id !== 'hotel-link' && link.id !== 'resto-link') {
+            link.addEventListener('click', function() { fermerNavbar(); });
         }
     });
 
-    // === COUVERTS IntersectionObserver ===
-    const restoSection = document.getElementById('restauration');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                restoSection.classList.add('animate');
-            } else {
-                restoSection.classList.remove('animate');
-            }
+    // === COUVERTS ===
+    var restoSection = document.getElementById('restauration');
+    new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            restoSection.classList.toggle('animate', entry.isIntersecting);
         });
-    }, { threshold: 0.15 });
-    observer.observe(restoSection);
+    }, {threshold: 0.15}).observe(restoSection);
 
     // === BAR TOGGLE ===
-    const btnBar = document.getElementById('btnBar');
-    const barExtra = document.getElementById('barExtra');
-    btnBar.addEventListener('click', () => {
-        btnBar.classList.toggle('open');
+    var btnBar = document.getElementById('btnBar');
+    var barExtra = document.getElementById('barExtra');
+    var arrowBar = document.getElementById('arrowBar');
+    btnBar.addEventListener('click', function() {
         barExtra.classList.toggle('open');
-        if (btnBar.classList.contains('open')) {
-            btnBar.querySelector('.btn-arrow').textContent = '↑';
-            btnBar.firstChild.textContent = 'Refermer ';
-        } else {
-            btnBar.querySelector('.btn-arrow').textContent = '↓';
-            btnBar.firstChild.textContent = 'Découvrir le bar ';
-        }
+        var open = barExtra.classList.contains('open');
+        arrowBar.textContent = open ? '↑' : '↓';
+        btnBar.firstChild.textContent = open ? 'Refermer ' : 'Découvrir le bar ';
     });
-
-    // MENU CLOSE
-    const closeBtn = document.getElementById('menuCloseBtn');
-    if(closeBtn) closeBtn.addEventListener('click', () => {
-        document.getElementById('menuOverlay').classList.remove('open');
-        document.body.style.overflow = '';
-    });
-
-    // BUILD MENU
-    const cats = [
-        {l:"🍔 Burgers", items:[
-            {n:"Cheese Berbère",d:"Pain, steak 150g, confit d’oignon, cheddar, salade, tomate, sauce Big Burger",p:"6,90€"},
-            {n:"Chicken Berbère",d:"Pain, poulet pané 135g, confit d’oignon, cheddar, salade, tomate, sauce Big Burger",p:"6,90€"},
-            {n:"Veggie Berbère",d:"Pain, falafel, confit d’oignon, cheddar, salade, tomate, sauce Big Burger ou Big Vegan",p:"6,90€"},
-            {n:"Raclette Berbère",d:"Pain, steak 150g, confit d’oignon, cheddar, salade, tomate, fromage raclette, poitrine boeuf",p:"8,90€"},
-            {n:"Chèvre Miel",d:"Pain, steak 150g, confit d’oignon, cheddar, salade, tomate, chèvre, miel, sauce cheezy",p:"8,90€"},
-            {n:"Roquefort",d:"Pain, steak 150g, confit d’oignon, cheddar, salade, tomate, roquefort, sauce cheezy",p:"9,90€"},
-            {n:"Double Cheese ✨",d:"2 steaks 150g, sauce burger, salade, tomate, oignons, cheddar, pain brioché",p:"12,90€"},
-            {n:"Burger du Mois — Le Morbier",d:"Steak 150g, rosties, oignons confits miel, morbier, salade, tomate",p:"11,90€"},
-        ]},
-        {l:"🥪 Sandwichs", items:[
-            {n:"L’Américain",d:"Pain demi-flûte, steak 150g, confit d’oignon, cheddar, salade, tomate, frites",p:"8,90€"},
-            {n:"Le Mexicain",d:"Pain, poulet mariné épices 120g, confit d’oignon, cheddar, salade, tomate, frites",p:"8,90€"},
-        ]},
-        {l:"🫓 Paninis", items:[
-            {n:"Panini Kebab ✨",d:"Salade, tomate, oignons, viande kebab, sauce au choix",p:"5,90€"},
-            {n:"3 Fromages",d:"Roquefort, chèvre, mozzarella",p:"5,90€"},
-            {n:"Poulet Curry",d:"",p:"5,90€"},
-            {n:"Mexicain",d:"Poulet mariné aux épices",p:"5,90€"},
-            {n:"Galette Kebab",d:"Galette, veau et volaille, salade, tomate, oignons, sauce au choix",p:"6,90€"},
-        ]},
-        {l:"🥗 Salades", items:[
-            {n:"Veggie",d:"Salade, falafel, tomates cerise, olive noir, oeuf, oignons confit, sauce veggie",p:"6,90€"},
-            {n:"César",d:"Salade, poulet pané, tomates cerise, olive noir, oeuf, oignons confit, sauce césar",p:"7,50€"},
-        ]},
-        {l:"🍟 Friture", items:[
-            {n:"Petite Frite",d:"",p:"2,50€"},{n:"Grande Frite",d:"",p:"4€"},
-            {n:"Tenders x2",d:"",p:"4,50€"},{n:"Tenders x4",d:"",p:"8€"},
-        ]},
-        {l:"🎒 Menus", items:[
-            {n:"Menu Étudiant",d:"1 Burger + Petite Frite + Boisson · Carte étudiant",p:"10€"},
-            {n:"Menu Enfant — Le Bambino",d:"Mini Cheese + Petite Frite + Capri-Sun + Compote + Jouet + Bonbon",p:"5,90€"},
-            {n:"Petit Déjeuner",d:"Café + Pain ou croissant + Jus d’orange",p:"3€"},
-            {n:"Menu du Jour",d:"Entrée + Plat + Dessert · Change chaque jour",p:"18€"},
-        ]},
-        {l:"🥤 Boissons", items:[
-            {n:"Coca, Sprite, Orangina, Fanta, Perrier, Ice Tea, Oasis",d:"",p:"2€"},
-            {n:"Evian",d:"",p:"1,50€"},
-        ]},
-    ];
-    const nav2 = document.getElementById('menuCatsNav');
-    const wrap = document.getElementById('menuSlidesWrap');
-    if(nav2 && wrap) {
-        cats.forEach((cat,i) => {
-            const btn = document.createElement('button');
-            btn.className = 'menu-cat-btn'+(i===0?' active':'');
-            btn.textContent = cat.l;
-            btn.onclick = () => switchCat(i);
-            nav2.appendChild(btn);
-            const slide = document.createElement('div');
-            slide.className = 'menu-slide'+(i===0?' active':'');
-            let html = '';
-            cat.items.forEach(item => {
-                html += '<div class="menu-plat"><div class="plat-info"><div class="plat-nom">'+item.n+'</div>';
-                if(item.d) html += '<div class="plat-desc">'+item.d+'</div>';
-                html += '</div><div class="plat-prix">'+item.p+'</div></div>';
-            });
-            slide.innerHTML = html;
-            wrap.appendChild(slide);
-        });
-    }
-
 });
 </script>
-<!-- MENU OVERLAY -->
-        <div class="menu-overlay" id="menuOverlay">
-            <div class="menu-overlay-inner">
-                <button class="menu-close-btn" id="menuCloseBtn">✕</button>
-                <h3 class="menu-slides-title">🍔 Berbère King — La Carte</h3>
-                <div class="menu-cats-nav" id="menuCatsNav"></div>
-                <div class="menu-slides-wrap" id="menuSlidesWrap"></div>
-            </div>
-        </div>
-
 </body>
 </html>
