@@ -1042,6 +1042,77 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // MENU CLOSE
+    const closeBtn = document.getElementById('menuCloseBtn');
+    if(closeBtn) closeBtn.addEventListener('click', () => {
+        document.getElementById('menuOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    });
+
+    // BUILD MENU
+    const cats = [
+        {l:"🍔 Burgers", items:[
+            {n:"Cheese Berbère",d:"Pain, steak 150g, confit d\u2019oignon, cheddar, salade, tomate, sauce Big Burger",p:"6,90€"},
+            {n:"Chicken Berbère",d:"Pain, poulet pané 135g, confit d\u2019oignon, cheddar, salade, tomate, sauce Big Burger",p:"6,90€"},
+            {n:"Veggie Berbère",d:"Pain, falafel, confit d\u2019oignon, cheddar, salade, tomate, sauce Big Burger ou Big Vegan",p:"6,90€"},
+            {n:"Raclette Berbère",d:"Pain, steak 150g, confit d\u2019oignon, cheddar, salade, tomate, fromage raclette, poitrine boeuf",p:"8,90€"},
+            {n:"Chèvre Miel",d:"Pain, steak 150g, confit d\u2019oignon, cheddar, salade, tomate, chèvre, miel, sauce cheezy",p:"8,90€"},
+            {n:"Roquefort",d:"Pain, steak 150g, confit d\u2019oignon, cheddar, salade, tomate, roquefort, sauce cheezy",p:"9,90€"},
+            {n:"Double Cheese ✨",d:"2 steaks 150g, sauce burger, salade, tomate, oignons, cheddar, pain brioché",p:"12,90€"},
+            {n:"Burger du Mois — Le Morbier",d:"Steak 150g, rosties, oignons confits miel, morbier, salade, tomate",p:"11,90€"},
+        ]},
+        {l:"🥪 Sandwichs", items:[
+            {n:"L\u2019Américain",d:"Pain demi-flûte, steak 150g, confit d\u2019oignon, cheddar, salade, tomate, frites",p:"8,90€"},
+            {n:"Le Mexicain",d:"Pain, poulet mariné épices 120g, confit d\u2019oignon, cheddar, salade, tomate, frites",p:"8,90€"},
+        ]},
+        {l:"🫓 Paninis", items:[
+            {n:"Panini Kebab ✨",d:"Salade, tomate, oignons, viande kebab, sauce au choix",p:"5,90€"},
+            {n:"3 Fromages",d:"Roquefort, chèvre, mozzarella",p:"5,90€"},
+            {n:"Poulet Curry",d:"",p:"5,90€"},
+            {n:"Mexicain",d:"Poulet mariné aux épices",p:"5,90€"},
+            {n:"Galette Kebab",d:"Galette, veau et volaille, salade, tomate, oignons, sauce au choix",p:"6,90€"},
+        ]},
+        {l:"🥗 Salades", items:[
+            {n:"Veggie",d:"Salade, falafel, tomates cerise, olive noir, oeuf, oignons confit, sauce veggie",p:"6,90€"},
+            {n:"César",d:"Salade, poulet pané, tomates cerise, olive noir, oeuf, oignons confit, sauce césar",p:"7,50€"},
+        ]},
+        {l:"🍟 Friture", items:[
+            {n:"Petite Frite",d:"",p:"2,50€"},{n:"Grande Frite",d:"",p:"4€"},
+            {n:"Tenders x2",d:"",p:"4,50€"},{n:"Tenders x4",d:"",p:"8€"},
+        ]},
+        {l:"🎒 Menus", items:[
+            {n:"Menu Étudiant",d:"1 Burger + Petite Frite + Boisson · Carte étudiant",p:"10€"},
+            {n:"Menu Enfant — Le Bambino",d:"Mini Cheese + Petite Frite + Capri-Sun + Compote + Jouet + Bonbon",p:"5,90€"},
+            {n:"Petit Déjeuner",d:"Café + Pain ou croissant + Jus d\u2019orange",p:"3€"},
+            {n:"Menu du Jour",d:"Entrée + Plat + Dessert · Change chaque jour",p:"18€"},
+        ]},
+        {l:"🥤 Boissons", items:[
+            {n:"Coca, Sprite, Orangina, Fanta, Perrier, Ice Tea, Oasis",d:"",p:"2€"},
+            {n:"Evian",d:"",p:"1,50€"},
+        ]},
+    ];
+    const nav2 = document.getElementById('menuCatsNav');
+    const wrap = document.getElementById('menuSlidesWrap');
+    if(nav2 && wrap) {
+        cats.forEach((cat,i) => {
+            const btn = document.createElement('button');
+            btn.className = 'menu-cat-btn'+(i===0?' active':'');
+            btn.textContent = cat.l;
+            btn.onclick = () => switchCat(i);
+            nav2.appendChild(btn);
+            const slide = document.createElement('div');
+            slide.className = 'menu-slide'+(i===0?' active':'');
+            let html = '';
+            cat.items.forEach(item => {
+                html += '<div class="menu-plat"><div class="plat-info"><div class="plat-nom">'+item.n+'</div>';
+                if(item.d) html += '<div class="plat-desc">'+item.d+'</div>';
+                html += '</div><div class="plat-prix">'+item.p+'</div></div>';
+            });
+            slide.innerHTML = html;
+            wrap.appendChild(slide);
+        });
+    }
+
 });
 </script>
 
