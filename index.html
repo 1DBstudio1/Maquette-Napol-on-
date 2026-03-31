@@ -607,10 +607,10 @@ footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; colo
 .berbere-box-info p { font-size:14px; line-height:1.8; color:rgba(245,245,245,0.65); }
 @media(max-width:768px){ .berbere-box { grid-template-columns:1fr; text-align:center; } }
 
-.menu-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:2000; overflow-y:auto; }
+.menu-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#0D0D0D; z-index:9999; overflow-y:auto; -webkit-overflow-scrolling:touch; }
 .menu-overlay.open { display:block; }
 .menu-overlay-inner { max-width:680px; margin:0 auto; padding:70px 20px 60px; }
-.menu-close-btn { position:fixed; top:16px; right:16px; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.4); color:#FFD700; width:44px; height:44px; border-radius:50%; font-size:18px; cursor:pointer; z-index:2001; }
+.menu-close-btn { position:fixed; top:16px; right:16px; background:rgba(255,215,0,0.15); border:1px solid rgba(255,215,0,0.5); color:#FFD700; width:48px; height:48px; border-radius:50%; font-size:20px; cursor:pointer; z-index:10000; }
 .menu-slides-title { font-family:'Cinzel',serif; font-size:20px; color:#FFD700; text-align:center; margin-bottom:20px; letter-spacing:3px; }
 .menu-cats-nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:24px; }
 .menu-cat-btn { background:rgba(255,215,0,0.06); border:1px solid rgba(255,215,0,0.2); color:rgba(245,245,245,0.6); padding:8px 14px; font-family:'Josefin Sans',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
@@ -774,16 +774,6 @@ footer p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; colo
                     <p>Burgers généreux, sandwichs, paninis, salades — une cuisine street food savoureuse rattachée au Napoléon.</p>
                     <a href="#" onclick="openMenuOverlay();return false;" class="btn-primary" style="display:inline-block;margin-top:20px;background:transparent;border:1px solid rgba(255,215,0,0.5);color:#FFD700;">DÉCOUVRIR NOTRE MENU →</a>
                 </div>
-            </div>
-        </div>
-
-        <!-- MENU OVERLAY -->
-        <div class="menu-overlay" id="menuOverlay">
-            <div class="menu-overlay-inner">
-                <button class="menu-close-btn" id="menuCloseBtn">✕</button>
-                <h3 class="menu-slides-title">🍔 Berbère King — La Carte</h3>
-                <div class="menu-cats-nav" id="menuCatsNav"></div>
-                <div class="menu-slides-wrap" id="menuSlidesWrap"></div>
             </div>
         </div>
 
@@ -1095,5 +1085,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 </script>
+<!-- MENU OVERLAY -->
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-overlay-inner">
+                <button class="menu-close-btn" id="menuCloseBtn">✕</button>
+                <h3 class="menu-slides-title">🍔 Berbère King — La Carte</h3>
+                <div class="menu-cats-nav" id="menuCatsNav"></div>
+                <div class="menu-slides-wrap" id="menuSlidesWrap"></div>
+            </div>
+        </div>
+
 </body>
 </html>
