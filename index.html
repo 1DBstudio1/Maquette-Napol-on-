@@ -230,6 +230,7 @@ section{padding:100px 40px;min-height:100vh;display:flex;align-items:center;just
 .contact-value{display:block;font-size:13px;color:rgba(245,245,245,0.6);line-height:1.6}
 .contact-map iframe{width:100%;height:450px;filter:grayscale(30%) brightness(0.85)}
 
+@keyframes floatBtn{0%,100%{transform:translateY(0);box-shadow:0 4px 20px rgba(255,215,0,0.2)}50%{transform:translateY(-6px);box-shadow:0 10px 28px rgba(255,215,0,0.35)}}
 /* === FOOTER === */
 footer{background:#0A0A0A;padding:30px 40px;text-align:center;border-top:1px solid rgba(255,215,0,0.1)}
 footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,245,0.3)}
@@ -316,11 +317,11 @@ footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(2
 </div>
 <div class="bar-extra" id="barExtra">
 <div class="bar-boissons">
-<h3 class="bloc-title">Nos incontournables</h3>
+<h3 class="bloc-title">Infos pratiques</h3>
 <div class="boissons-grid">
-<div class="boisson-card"><span class="boisson-icon">🍺</span><h4>Bière pression</h4><p>Fraîche et généreuse, servie comme il se doit.</p></div>
-<div class="boisson-card"><span class="boisson-icon">☕</span><h4>Café du comptoir</h4><p>Le rendez-vous des habitués, chaque matin.</p></div>
-<div class="boisson-card"><span class="boisson-icon">🥃</span><h4>Cocktail maison</h4><p>La signature du Napoléon — à découvrir.</p></div>
+<div class="boisson-card"><span class="boisson-icon">📶</span><h4>WiFi gratuit</h4><p>Connexion disponible pour tous les clients, sans limitation.</p></div>
+<div class="boisson-card"><span class="boisson-icon">💳</span><h4>Paiement CB</h4><p>Carte bancaire acceptée. Espèces également bienvenues.</p></div>
+<div class="boisson-card"><span class="boisson-icon">📺</span><h4>Retransmission matchs</h4><p>Grands matchs diffusés en direct sur écran. Venez avec vos amis.</p></div>
 </div>
 </div>
 <div class="bar-events">
@@ -466,9 +467,9 @@ footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(2
 <h2>À propos de nous</h2>
 <p class="section-sub">Une équipe locale au service de votre séjour</p>
 <div class="apropos-texte">
-<p>Karim, c'est un enfant de Gap.</p>
-<p>Le Napoléon, il le connaît depuis longtemps — et quand l'occasion s'est présentée de le reprendre, il n'a pas hésité. Ce qui frappe chez lui, c'est l'attachement à ce lieu. Il connaît les anciens propriétaires, il a entendu les histoires du comptoir, il sait ce que ce bar représente pour les Gapençais.</p>
-<p>Reprendre le Napoléon, c'était pas juste ouvrir un commerce — c'était continuer quelque chose. Il a les idées qui fusent, l'envie de bien faire, et un vrai sens de l'accueil. Ses clients le lui rendent bien.</p>
+<p>Le Napoléon, c'est un bar qui a de la mémoire.</p>
+<p>Depuis des décennies, il accueille les habitués du quartier, les travailleurs qui passent, les voyageurs qui s'arrêtent avant de repartir vers la montagne. Ce comptoir, ces tables, cette adresse — tout ça a une histoire que les murs connaissent mieux que personne.</p>
+<p>Aujourd'hui sous une nouvelle direction, l'endroit garde ce qui a toujours fait son caractère — un accueil direct, une ambiance sans chichis, et cette façon naturelle de mettre les gens à l'aise. Que vous veniez pour un café le matin ou pour passer la soirée, vous êtes chez vous ici.</p>
 </div>
 </div>
 </section>
@@ -483,6 +484,9 @@ footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(2
 <div class="avis-card"><div class="avis-stars">★★★★★</div><p>"Un très bon accueil et le patron au top. Je recommande !"</p><span class="avis-author">— Salvatore B.</span></div>
 <div class="avis-card"><div class="avis-stars">★★★★★</div><p>"En transit à Gap, j'ai trouvé ici exactement ce qu'il me fallait. Simple, efficace, chaleureux."</p><span class="avis-author">— Julien D.</span></div>
 <div class="avis-card avis-note"><div class="avis-score">4.2</div><div class="avis-stars">★★★★☆</div><span class="avis-source">32 avis Google</span></div>
+</div>
+<div style="text-align:center;margin-top:40px;">
+<a href="https://search.google.com/local/writereview?placeid=ChIJrRgnAt3IyRIRFGVwTSS1a4Q" target="_blank" class="btn-primary" style="display:inline-block;animation:floatBtn 3s ease-in-out infinite;">⭐ Laisser un avis Google</a>
 </div>
 </div>
 </section>
